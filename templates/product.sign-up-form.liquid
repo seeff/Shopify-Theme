@@ -1,0 +1,218 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign product_back_ordered_msg = settings.product_back_ordered_msg_en %}
+    {% assign next_product_button = settings.next_product_button_en %}
+    {% assign prev_product_button = settings.prev_product_button_en %}
+    {% assign qty = settings.qty_en %}
+	
+{% elsif settings.language == "es" %}
+
+    {% assign product_back_ordered_msg = settings.product_back_ordered_msg_es %}
+    {% assign next_product_button = settings.next_product_button_es %}
+    {% assign prev_product_button = settings.prev_product_button_es %}
+    {% assign qty = settings.qty_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign product_back_ordered_msg = settings.product_back_ordered_msg_de %}
+    {% assign next_product_button = settings.next_product_button_de %}
+    {% assign prev_product_button = settings.prev_product_button_de %}
+    {% assign qty = settings.qty_de %}
+
+{% endif %}
+
+
+<div id="product" class="c cf">
+
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+  <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
+  
+  <div class="sign-up-seventy">
+    
+    <div id="product-details" >
+      
+      <h1 itemprop="name">
+
+	   	{% if collection.previous_product %}<a class="prev-product" href="{{collection.previous_product}}">&nbsp;</a>{% endif %}
+
+      	{{ product.title }}
+      	
+	      
+	    {% if collection.next_product %}<a class="next-product" href="{{collection.next_product}}">&nbsp;</a>{% endif %}
+	      
+      </h1>
+     
+      
+      
+      {% assign hide_default_title = false %}
+      {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+        {% assign hide_default_title = true %}
+      {% endif %}       
+
+      <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
+       <select id="product-select" name="id" class="hidden">
+       {% for variant in product.variants %}
+         <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+       {% endfor %}
+       </select>
+        <label>{{qty}}</label><input class="quantity" type="number" value="1" name="quantity" />
+      </div>     
+            
+      <div id="product-description" class="rte" itemprop="description">
+        {{ product.description }}
+
+      </div>
+      
+      {% if product.compare_at_price > product.price %}
+	      {% else %}
+	      {% endif %}
+      
+            
+         
+             
+      <div id="backorder" class="hidden">
+        <p><span id="selected-variant"></span> {{product_back_ordered_msg}}</p>
+      </div>
+      
+      
+           
+
+      {% comment %}
+      {% if collection %}
+        {% if collection.previous_product or collection.next_product %}
+        <div>     
+        {% if collection.previous_product %}
+          {% capture prev_url %}{{ collection.previous_product}}#content{% endcapture %}
+          <span class="left"><a href="{{prev_url}}">&larr;{{prev_product_button}}</a></span>
+        {% endif %}
+        {% if collection.next_product %}
+          {% capture next_url %}{{ collection.next_product}}#content{% endcapture %}
+          <span class="right"><a href="{{next_url}}">{{next_product_button}}&rarr;</a></span>
+        {% endif %}
+        </div>
+        {% endif %}
+      {% endif %}
+      {% endcomment %}
+    </div><!-- #product-details -->
+
+  
+  <div id="product-photos" class="l forty">
+  
+  
+
+
+
+
+
+  </div><!-- #product-photos -->
+ 
+
+</div>
+
+
+
+
+
+{% include 'related' %}
+{% comment %}
+
+{% endcomment %}
+
+{% comment %}
+Adding support for product options. See here for details: http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options
+{% endcomment %}
+
+<script>
+
+$(function() {
+	/*$(".thumb-img").bind("mouseover",function(){
+		$(".cloud-zoom img").attr("src",$(this).attr("href"));
+        return false;
+    });
+	$(".thumb-img").bind("click",function(){
+		$(".cloud-zoom img").attr("src",$(this).attr("href"));
+        return false;
+    });*/
+	$('.cloud-zoom').zoom();
+	/*$('.size-guide-link').click(function(e) {
+		e.preventDefault();
+		$("#size-popup").modal({
+			overlayClose:true
+		});
+	});*/
+});
+  
+var selectCallback = function(variant, selector) {
+
+  if (variant) {
+    
+    // Selected a valid variant that is available.
+    if (variant.available) {
+          
+      // Enabling add to cart button.
+      jQuery('#add').removeClass('disabled').removeAttr('disabled').val('Add to Cart').fadeTo(200,1);
+    
+      // If item is backordered yet can still be ordered, we'll show special message.
+      if (variant.inventory_management && variant.inventory_quantity <= 0) {
+        jQuery('#selected-variant').html({{ product.title | json }}{% unless hide_default_title %} + ' - ' + variant.title{% endunless %});
+        jQuery('#backorder').removeClass("hidden");
+      } else {
+        jQuery('#backorder').addClass("hidden");
+      }
+      
+    } else {
+      // Variant is sold out.
+      jQuery('#backorder').addClass('hidden');
+      jQuery('#add').val('Sold Out').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);        
+    }
+    
+    // Whether the variant is in stock or not, we can update the price and compare at price.
+    if ( variant.compare_at_price > variant.price ) {
+      jQuery('#product-price').html('<span class="product-price on-sale">'+ Shopify.formatMoney(variant.price, "{{ shop.money_format }}") +'</span>'+'&nbsp;<s class="product-compare-price">'+Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}")+ '</s>');
+    } else {
+      jQuery('#product-price').html('<span class="product-price">'+ Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + '</span>' );
+    }        
+
+  } else {
+    // variant doesn't exist.
+    jQuery('#backorder').addClass('hidden');
+    jQuery('#add').val('Unavailable').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
+  }
+
+};
+  
+$(function($) {
+
+  new Shopify.OptionSelectors('product-select', { product: {{ product | json }}, onVariantSelected: selectCallback });
+  
+  // Add label if only one product option and it isn't 'Title'.
+  {% if product.options.size == 1 and product.options.first != 'Title' %}
+    $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+  {% endif %}
+  
+  // Auto-select first available variant on page load.
+  {% assign found_one_in_stock = false %}
+  {% for variant in product.variants %}
+    {% if variant.available and found_one_in_stock == false %}
+      {% assign found_one_in_stock = true %}
+      {% for option in product.options %}
+      $('.single-option-selector:eq({{ forloop.index0 }})').val({{ variant.options[forloop.index0] | json }}).trigger('change');
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+
+});
+
+$(window).load(function() {
+	$('.single-option-selector').customSelect();
+    /*$('#product-select-option-0').customSelect({customClass:'var-dropdown'})
+	$('#product-select-option-1').customSelect({customClass:'var-dropdown'});
+
+	$('.var-dropdownInner').append('<span class="dd-triangle"></span>');*/
+});
+
+
+
+</script>

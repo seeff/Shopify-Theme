@@ -1,0 +1,6 @@
+<div id="share">
+	<a target="_blank" href="mailto:?subject={{shop.name}} | {{product.title}}&amp;body={{shop.url}}{{product.url}}" class="email"><i class="fa fa-envelope"></i></a>
+	<a target="_blank" href="http://www.facebook.com/sharer.php?s=100&p[url]={{shop.url}}{{product.url}}&p[title]={{product.title}}" class="fb"><i class="fa fa-facebook"></i></a>
+	<a target="_blank" href="http://twitter.com/share?text={{product.title}}&nbsp;-&nbsp;{{shop.url}}{{product.url}}&amp;url={{product.url}}" class="tw"><i class="fa fa-twitter"></i></a>
+	<a target="_blank" href="http://pinterest.com/pin/create/button/?url={{product.url}}&amp;media={{product.featured_image | product_img_url: 'original' }}&amp;description={{product.description | strip_html}}" class="pi"><i class="fa fa-pinterest"></i></a>
+</div>

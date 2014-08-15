@@ -1,0 +1,82 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign blog_h1 = settings.blog_h1_en %}
+	{% assign blog_posted_by = settings.blog_posted_by_en %}
+	{% assign blog_read_more = settings.blog_read_more_en %}
+	{% assign blog_share = settings.blog_share_en %}
+
+{% elsif settings.language == "es" %}
+
+    {% assign blog_h1 = settings.blog_h1_es %}
+	{% assign blog_posted_by = settings.blog_posted_by_es %}
+	{% assign blog_read_more = settings.blog_read_more_es %}
+	{% assign blog_share = settings.blog_share_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign blog_h1 = settings.blog_h1_de %}
+	{% assign blog_posted_by = settings.blog_posted_by_de %}
+	{% assign blog_read_more = settings.blog_read_more_de %}
+	{% assign blog_share = settings.blog_share_de %}
+
+{% endif %}
+
+
+
+{% paginate blog.articles by 5 %}
+<h1 class="page-title">{{ blog_h1 }}</h1>
+
+<div class="c thin cf">
+<ul id="blog-page" >
+
+  {% for article in blog.articles %}
+  <li class="blog-article{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}">
+    <h2 class="blog-article-title">
+      <a href="{{ article.url }}">{{ article.title }}</a>
+    </h2>
+    <h3 class="blog-article-date">
+      {{blog_posted_by}} 
+	   {% if article.user.homepage != ""  %}
+	   <a class="author_google_plus_id" href="{{article.user.homepage}}?rel=author">{{ article.user.name}}</a>
+	   {% endif %} | 
+      <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%m.%d.%y' }}</time>
+    </h3>
+    <div class="rte">
+        <p>{{ article.content | truncatewords: 50 }}</p>
+    </div>
+    <a class="blog-read-more" href="{{ article.url }}">{{blog_read_more}}</a>
+    <ul class="blog-article-meta">
+      {% if blog.comments_enabled? %}
+      <li class="blog-article-meta-comments">
+        <a href="{{ article.url }}#comments">{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}</a>
+      </li>
+      {% endif %}
+    </ul>
+    <div class="blog-social">
+		<span>{{blog_share}}</span>
+
+      <div class="addthis_native_toolbox" data-url="{{article.url}}" data-title="{{article.title}}"></div>
+      
+      {% comment %}
+		<a href="http://twitter.com/share?text={{article.title}}&url={{shop.url}}{{article.url}}" target="_blank"><i class="fa fa-twitter"></i></a>
+		<a href="http://www.facebook.com/sharer.php?u={{shop.url}}{{article.url}}" target="_blank"><i class="fa fa-facebook"></i></a>
+      {% endcomment %}
+	</div>
+  </li>
+  {% endfor %}
+</ul>
+{% if paginate.pages > 1 %}
+	<div id="pagination">
+  	{{ paginate | default_pagination | replace: '&laquo; Previous', '&lt;' | replace: 'Next &raquo;', '&gt;' }}
+    </div>
+{% endif %}
+  
+</div>  
+
+
+{% endpaginate %}
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+

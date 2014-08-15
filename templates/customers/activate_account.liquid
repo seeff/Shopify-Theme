@@ -1,0 +1,60 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign activate_title_h1 = settings.activate_title_h1_en %}
+    {% assign activate_password_msg = settings.activate_password_msg_en %}
+	{% assign activate_password_label = settings.password_label_en %}
+	{% assign activate_p_confirm_label = settings.password_confirm_label_en %}
+	{% assign activate_account_button = settings.activate_account_button_en %}
+	{% assign activate_decline_button = settings.activate_decline_button_en %}
+
+{% elsif settings.language == "es" %}
+
+    {% assign activate_title_h1 = settings.activate_title_h1_es %}
+    {% assign activate_password_msg = settings.activate_password_msg_es %}
+	{% assign activate_password_label = settings.password_label_es %}
+	{% assign activate_p_confirm_label = settings.password_confirm_label_es %}
+	{% assign activate_account_button = settings.activate_account_button_es %}
+	{% assign activate_decline_button = settings.activate_decline_button_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign activate_title_h1 = settings.activate_title_h1_de %}
+    {% assign activate_password_msg = settings.activate_password_msg_de %}
+	{% assign activate_password_label = settings.password_label_de %}
+	{% assign activate_p_confirm_label = settings.password_confirm_label_de %}
+	{% assign activate_account_button = settings.activate_account_button_de %}
+	{% assign activate_decline_button = settings.activate_decline_button_de %}
+
+{% endif %}
+
+
+{% layout settings.customer_layout %}
+<div id="customer-wrapper" class="desktop-12 mobile-3">
+
+<div id="template">
+  <div class="template_header">
+    <h2 class="title">{{activate_title_h1}}</h2>
+    <p class="note">{{activate_password_msg}}</p>
+  </div>
+
+  {% form 'activate_customer_password' %}
+    {{ form.errors | default_errors }}
+
+    <div id="password" class="clearfix large_form">
+      <label class="large" for="password"> {{activate_password_label}}</label>
+      <input type="password" value="" name="customer[password]" id="customer_password" class="large password" size="16" />
+    </div>
+    <div id="password_confirm" class="clearfix large_form">
+      <label class="large" for="password_confirmation">{{activate_p_confirm_label}}</label>
+      <input type="password" value="" name="customer[password_confirmation]" id="customer_password_confirmation" class="large password" size="16" />
+    </div>
+    <div class="action_bottom">
+      <input class="secondary button" type="submit" value="{{activate_account_button}}" />
+      <span class="note">or</span>
+      <input type="submit" class="cancel" name="decline" id="customer_decline" value="{{activate_decline_button}}" />
+    </div>
+  {% endform %}
+</div>
+</div>

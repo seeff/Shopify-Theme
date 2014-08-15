@@ -1,0 +1,5 @@
+<div id="main-collections">
+{% for link in linklists.main-collections.links %}
+	<a {% if link.active %}class="active"{% endif %} href="{{link.url}}">{{link.title}}</a>
+{% endfor %}
+</div>

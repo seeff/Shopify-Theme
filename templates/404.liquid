@@ -1,0 +1,29 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+
+{% if settings.language == "en" %}
+
+  {% assign 404_h1 = settings.404_h1_en %}
+  {% assign 404_h2 = settings.404_h2_en %}
+
+{% elsif settings.language == "es" %}
+
+  {% assign 404_h1 = settings.404_h1_es %}
+  {% assign 404_h2 = settings.404_h2_es %}
+ 
+{% elsif settings.language == "de" %}
+    
+  {% assign 404_h1 = settings.404_h1_de %}
+  {% assign 404_h2 = settings.404_h2_de %}
+  
+{% endif %}
+
+
+<div class="c cf">
+  
+  <h1>{{404_h1}}</h1>
+  <h2>{{404_h2}}</h2>
+
+</div>
+
+{% include 'browse-fairings' %}

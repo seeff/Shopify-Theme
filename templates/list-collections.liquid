@@ -1,0 +1,38 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign collections_h1 = settings.collections_h1_en %}
+
+{% elsif settings.language == "es" %}
+
+    {% assign collections_h1 = settings.collections_h1_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign collections_h1 = settings.collections_h1_de %}
+
+{% endif %}
+
+
+{% include 'collection-listing' %}
+
+{% comment %}
+{% raw %}
+<!-- Alternatively, if not using a snippet, use the code below. 
+To use the code below, get rid of the above 'include', and get rid of the comment and raw tags, and you're in business. -->
+{% paginate collections by 6 %}
+<h1>{{collections_h1}}</h1>
+<ul class="grid clearfix">
+{% for collection in collections %}
+  {% include 'collection-grid-item' with 'three-per-row' %}
+{% endfor %}
+</ul>
+{% if paginate.pages > 1 %}
+<div id="pagination">
+  {{ paginate | default_pagination }}
+</div>
+{% endif %}
+{% endpaginate %}
+{% endraw %}
+{% endcomment %}

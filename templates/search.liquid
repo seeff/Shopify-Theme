@@ -1,0 +1,132 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign search_for_terms = settings.search_for_terms_en %}
+	
+{% elsif settings.language == "es" %}
+
+    {% assign search_for_terms = settings.search_for_terms_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign search_for_terms = settings.search_for_terms_de %}
+
+{% endif %}
+
+
+{% comment %}
+The search.liquid template is not a required template.
+That search.liquid template is included in the current theme to make it easier for you 
+to customize your /search page.
+Whether you are using your own template for the search page or not,
+the {{ content_for_header }} tag in theme.liquid will always output the following on the /search page:
+<link rel="stylesheet" href="/global/search.css" type="text/css" />
+So the /search page is always styled by a globally-hosted stylesheet called search.css.
+You may override and complement that CSS in your theme's stylesheet.
+We are using a div#searchresults below so that the styles defined in search.css get
+applied to the elements on this page; the 'searchresults' id is used in the CSS
+selectors inside search.css.
+{% endcomment %}
+
+
+<h1 class="page-title">{{search_for_terms}}: {{search.terms}}</h1>
+<div id="content" class="c cf">
+  
+  <div id="accordion" class="collection-sidebar">
+	<ul>
+		{% for link in linklists.shop.links %}
+		<!-- does this link in our iteration point to the current page? -->
+		{% assign current = false %}{% if template == 'index' and link.url == '/' %}{% assign current = true %}{% elsif collection.url == link.url %}{% assign current = true %}{% elsif blog.url == link.url %}{% assign current = true %}{% elsif page.url == link.url %}{% assign current = true %}{% elsif page_title == link.title %}{% assign current = true %}{% elsif template == 'list-collections' and link.url == '/collections' %}{% assign current = true %}{% elsif page_title == 'Products' and link.url == '/collections/all' %}{% assign current = true %}{% elsif template == 'article' and link.url == article.url %}{% assign current = true %}{% endif %}
+		<!-- end of soul-searching about active class -->
+	    {% capture clh %}{{ link.title | handle }}{% endcapture %}
+        {% assign child_active = false %}
+      	{% for la in linklists[clh].links %}
+	      {% if la.active %}
+      		{% unless link.handle contains 'featured' %}
+		      {% assign child_active = true %}
+		    {% endunless %}
+	      {% endif %}
+	    {% endfor %}
+      
+			<li>
+              <a id="{{link.handle}}" {% if link.active or child_active == true %} class="active"{% endif %} href="{{link.url}}"><span>{{link.title}}</span></a>
+				{% capture child_list_handle %}{{ link.title | handle }}{% endcapture %}
+			    {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+              	{% unless link.handle contains 'featured' %}
+			    <ul>
+			      {% for l in linklists[child_list_handle].links %}
+                  <li><a {% if l.active %} class="active"{% endif %} href="{{ l.url }}">{{ l.title }}</a></li>
+			      {% endfor %}
+			    </ul>
+	            {% endunless %}
+			    {% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+      <a href="/products/design-your-own"><img src="{{'design-your-own.png' | asset_url }}" width="100%" /></a>
+      <br/><br/><center>{{'free-shipping-vertical.png' | asset_url | img_tag }}</center>
+
+	</div>
+	<div class="collection-list">
+  {% comment %}
+      <form action="/search" method="get" class="search-form" role="search">
+        <p>
+          <input type="text" name="q" value="{{ search.terms | escape }}" />
+          <input type="hidden" name="type" value="product" />
+          <input type="submit" value="Search again..." class="btn" />
+        </p>
+      </form>
+  
+  
+  search.performed is false when accessing the /search page without a 'q' parameter set
+  in the URL. A shop-owner can link to the /search page from one of his link lists.
+  It is important to show a search form on that page if search.performed is false.
+  {% endcomment %}
+  
+  {% if search.performed %}
+    
+    {% paginate search.results by 50 %}
+    
+    {% comment %}
+    Common pitfall to avoid: search.results should never be accessed before the opening 
+    paginate tag. Move the opening and closing paginate tags to the very top and bottom of your
+    search.liquid template if you need to.
+    If you fail to do the above, the pagination of search results will be broken.
+    search.results_count is fine to access in or out of the paginate block.
+    {% endcomment %}
+  
+    {% if search.results_count == 0 %}  
+    <p>Your search for "{{ search.terms }}" did not yield any results.</p>              
+    {% else %}
+    <ul class="grid">
+      {% for item in search.results %}      
+      	{% assign product = item %}
+      	{% include 'product-grid-item' with 'four-per-row' %}
+      {% endfor %}
+    </ul>
+    {% endif %}    
+    {% if paginate.pages > 1 %}
+    <div id="pagination" class="cf">
+      {{ paginate | default_pagination }}
+    </div>
+    {% endif %}
+    
+    {% endpaginate %}    
+    
+  {% endif %}  
+
+</div>
+<script>
+$(function() {
+	function setLazy(){
+        $('.lazy').lazyload({
+            effect: "fadeIn",
+            threshold: 200
+        });
+        // scroll a tiny bit just make sure to trigger load for images that are currently visible
+        window.scroll(0,1);
+    }
+    setLazy();
+});
+</script>

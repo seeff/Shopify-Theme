@@ -1,0 +1,52 @@
+{% assign number_of_related_products_to_show = 8 %}
+{% assign image_size = 'medium' %}
+{% assign heading = 'Shop Other Colors' %}
+ 
+{% assign number_of_related_products_to_fetch = number_of_related_products_to_show | plus: 1 %}
+ 
+{% if collection != null or collection.handle != 'frontpage' or collection.handle != 'all' %}
+{% assign found_a_collection = false %}
+{% for c in product.collections %}
+	{% assign p_part = product.handle | split: '-' %}
+	{% assign c_part = c.handle | split: '-' %}
+	{% if found_a_collection == false and c.handle != 'frontpage' and c.handle != 'all-products' and c.all_products_count > 1 %}
+
+    {% if p_part[0] contains c_part[0]  %}
+		
+    	{% assign collection = c %}
+		{% assign found_a_collection = true %}
+    {% endif %}
+    	
+  {% endif %}
+{% endfor %}
+{% endif %}
+ 
+{% if collection and collection.products_count > 1 %}
+	<div id="accessories">
+	<h1>{{heading}}</h1>
+	<div class="c cf">
+	<div id="owl-wrap">
+	<div id="owl">
+	{% assign current_product = product %}
+	{% assign current_product_found = false %}
+	{% for product in collection.products limit: number_of_related_products_to_fetch %}
+	{% if product.handle == current_product.handle %}
+	   {% assign current_product_found = true %}
+	{% else %}
+	   {% unless current_product_found == false and forloop.last %}
+		<div class='item'>			
+			<a href="{{product.url}}">
+			<img src="{{product.featured_image | product_img_url: 'large' }}" /><br/>
+			<b>{{product.title}}</b><br/>
+			{{ product.compare_at_price_max | money  }}
+			</a>
+		</div>
+	{% endunless %}
+    {% endif %}
+    {% endfor %}
+	</div>
+	</div>
+	</div>
+</div>
+ 
+{% endif %}

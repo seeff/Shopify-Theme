@@ -1,0 +1,117 @@
+nav ul,nav ol{list-style:none;list-style-image:none;}form{margin:0;}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em;}legend{border:0;padding:0;white-space:normal;*margin-left:-7px;}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;-webkit-appearance: none;border-radius:0;-moz-border-radius:0;}button,input{line-height:normal;}
+
+.wufoo *, .wufoo *:before, .wufoo *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+
+/* - - - - - - - - - - - - - - - - - - - - -
+
+ Title : Wufoo Form Style
+
+ Last Updated : August 12, 2014
+
+- - - - - - - - - - - - - - - - - - - - - */
+
+/* Backgrounds */
+.wufoo html{background-image:none;}
+.wufoo input.text, .wufoo textarea.textarea{background:#FFFFFF}
+.wufoo .focused{background-color:#FFFFFF}
+.wufoo .instruct{background-color:#F5F5F5}
+.wufoo input.btTxt:hover{background: #929497;}
+
+/* Borders */
+.wufoo #container{border:0 solid #cccccc}
+.wufoo .info{border-bottom:1px dotted #CCCCCC}
+.wufoo .instruct{border:1px solid #e6e6e6}
+
+/* Typography */
+.wufoo, .wufoo input.text, .wufoo input.search, .wufoo input.file, .wufoo textarea.textarea, .wufoo select.select {
+	font-family: 'proxima-nova'; font-size: 14px; font-weight: 600;
+}
+
+.wufoo .info h2{font-size:160%;font-family:inherit;color:#000000}
+.wufoo .info div{font-size:95%;font-family:inherit;color:#444444}
+.wufoo .section h3{font-size:110%;font-family:inherit;background:#FFFFFF;color:#000000}
+.wufoo .section div{font-size:85%;font-family:inherit;color:#444444}
+.wufoo label , .wufoo legend {
+	display: block;
+	color: black;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+	}
+.wufoo label { padding: 0px; }
+.wufoo li div, .wufoo li div label, .wufoo li span label{font-family:inherit;color:#444444}
+.wufoo li {width: 67%;}
+.wufoo li span {
+	display: inline;
+	padding: 5px 0;
+}
+
+@media (max-width: 480px) {
+	.wufoo li {width: 100%;}
+}
+
+.wufoo input.text, .wufoo textarea.textarea, .wufoo select.select, .wufoo label.choice{
+	font-size:100%;
+	font-family:inherit;
+	color:#333333;
+	padding: 10px;
+	margin: 5px 0 0 0;
+	background-color: #FFFFFF;
+}
+
+.wufoo label.choice{color:#444444}
+.wufoo .instruct{
+	font-size:80%;
+	font-family:inherit;
+	color:#444444;
+	margin: 32px 0 0 0;
+
+}
+
+.wufoo input.field.file{
+	font-family: 'proxima-nova'; font-size: 14px; font-weight: 600;
+}
+
+.wufoo img#pickdate111{
+	margin: 5px 0;
+	padding: 5px 0;
+}
+
+.wufoo input[type="submit"]{
+	align-items: flex-start;
+	text-align: center;
+}
+
+.wufoo input.field.file:hover{
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.wufoo input[type=text], input[type=number], input[type=email], input[type=password], textarea {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #BBBCBC;
+	color: #AEADAB;
+	font-family: 'proxima-nova';
+	font-size: 15px;
+	padding: 10px;
+	margin: 5px 0 0 0;
+}
+
+.wufoo input.btTxt{
+	display: inline-block;
+	font-family: 'OswaldLight';
+	background: black;
+	border: 0;
+	color: white;
+	text-transform: uppercase;
+	padding: 5px 20px;
+}
+
+.wufoo input.file {
+	position: relative;
+	text-align: right;
+	z-index: 2;
+}
+
+.wufoo span.symbol{
+	padding: 14px 0 0 5px;
+}

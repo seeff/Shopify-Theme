@@ -1,0 +1,118 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign post_success_msg = settings.post_success_msg_en %}
+    {% assign post_error_msg_part1 = settings.post_error_msg_part1_en %}
+    {% assign post_error_msg_part2 = settings.post_error_msg_part2_en %}
+    {% assign contact_fullname = settings.contact_fullname_en %}
+    {% assign contact_email = settings.email_label_en %}
+    {% assign email_subject = settings.email_subject_en %}
+    {% assign email_message = settings.email_message_en %}
+    {% assign name_placeholder = settings.name_placeholder_en %}
+    {% assign email_placeholder = settings.email_placeholder_en %}
+    {% assign subject_placeholder = settings.subject_placeholder_en %}
+    {% assign message_placeholder = settings.message_placeholder_en %}
+    {% assign submit_button = settings.submit_button_en %}
+
+{% elsif settings.language == "es" %}
+
+    {% assign post_success_msg = settings.post_success_msg_es %}
+    {% assign post_error_msg_part1 = settings.post_error_msg_part1_es %}
+    {% assign post_error_msg_part2 = settings.post_error_msg_part2_es %}
+    {% assign contact_fullname = settings.contact_fullname_es %}
+    {% assign contact_email = settings.email_label_es %}
+    {% assign email_subject = settings.email_subject_es %}
+    {% assign email_message = settings.email_message_es %}
+    {% assign name_placeholder = settings.name_placeholder_es %}
+    {% assign email_placeholder = settings.email_placeholder_es %}
+    {% assign subject_placeholder = settings.subject_placeholder_es %}
+    {% assign message_placeholder = settings.message_placeholder_es %}
+    {% assign submit_button = settings.submit_button_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign post_success_msg = settings.post_success_msg_de %}
+    {% assign post_error_msg_part1 = settings.post_error_msg_part1_de %}
+    {% assign post_error_msg_part2 = settings.post_error_msg_part2_de %}
+    {% assign contact_fullname = settings.contact_fullname_de %}
+    {% assign contact_email = settings.email_label_de %}
+    {% assign email_subject = settings.email_subject_de %}
+    {% assign email_message = settings.email_message_de %}
+    {% assign name_placeholder = settings.name_placeholder_de %}
+    {% assign email_placeholder = settings.email_placeholder_de %}
+    {% assign subject_placeholder = settings.subject_placeholder_de %}
+    {% assign message_placeholder = settings.message_placeholder_de %}
+    {% assign submit_button = settings.submit_button_de %}
+
+
+{% endif %}
+
+
+<h1 class="page-title">{{page.title}}</h1>
+{% if settings.show_contact_image %}
+<img src="{{'contact-image.jpg' | asset_url  }}" width="100%" class="heading-img" />
+{% endif %}
+
+<div id="contact-page" class="c cf">
+
+<div class="contact-left">
+  {% comment %}<iframe src="http://unyq.zendesk.com/account/dropboxes/20293913" width="100%" height="600"></iframe>{% endcomment %}
+{% form 'contact' %}
+
+{% if form.posted_successfully? %}
+    <div class="successForm feedback">
+      <p>{{post_success_msg}}</p>
+    </div>
+{% endif %}
+
+{% if form.errors %}
+<div class="errorForm feedback">
+  <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+  <p>{{post_error_msg_part1}} {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. {{post_error_msg_part2}}:</p>
+  {% for field in form.errors %}
+    <p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+  {% endfor %}
+</div>
+{% endif %}
+ 
+<div id="contactFormWrapper">
+  <p>
+    <label>{{contact_fullname}}:</label>
+    <input type="text" id="contactFormFullName" name="contact[full_name]" placeholder="{{name_placeholder}}" required/>
+  </p>
+  <p>
+    <label>{{contact_email}}:</label>
+    <input type="email" id="contactFormEmail" name="contact[email]" placeholder="{{email_placeholder}}"  required/>
+  </p>
+    <p>
+      <label>{{email_subject}}:</label>
+      <input type="text" id="contactFormSubject" name="contact[subject]" placeholder="{{subject_placeholder}}" required/>
+  </p>
+  <p>
+    <label>{{email_message}}:</label>
+    <textarea rows="10" cols="75" id="contactFormMessage" name="contact[body]" placeholder="{{message_placeholder}}" required></textarea>
+  </p>
+  <p>
+    <input type="submit" id="contactFormSubmit" value="{{submit_button}}" />
+  </p>            
+</div><!-- contactWrapper -->
+
+{% endform %}
+
+<style>
+.contact-form {margin:1em 0}
+.contact-form input { 
+    -webkit-box-shadow: 0px 0 0 0 #000;
+	box-shadow: 0px 0 0 0 #000;
+}
+.feedback {padding:0.5em 0.7em;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px}
+.feedback p {padding:0.5em 0 !important;margin:0 !important}
+.successForm {background:#BDE0A8;color:green}
+.errorForm {background:#EEBDBD;color:red}
+</style>
+</div>
+<div class="contact-right">
+	{{page.content}}
+</div>
+</div>

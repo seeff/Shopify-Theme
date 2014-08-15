@@ -1,0 +1,67 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign about_page_title = settings.about_page_title_en %}
+
+{% elsif settings.language == "es" %}
+
+    {% assign about_page_title = settings.about_page_title_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign about_page_title = settings.about_page_title_de %}
+
+{% endif %}
+
+
+<h1 class="page-title">{{about_page_title}}</h1>
+
+<div id="content" class="{{page.handle}} press-styling">
+	<div class="c cf">
+		<div class="press-left">
+			<ul>
+			{% for link in linklists.about.links %}
+				<li {% if link.active %}class="active"{% endif %}><a  href="{{link.url}}">{{link.title}}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+		<div class="press-right rte">
+			{% if page.handle == "team" %}
+				{% for article in blogs.team.articles %}
+					{% for t in article.tags %}
+						{% if t contains "facebook" %}{% assign fb = t | remove: 'facebook-' %}{% endif %}
+						{% if t contains "twitter" %}{% assign tw = t | remove: 'twitter-' %}{% endif %}
+						{% if t contains "pinterest" %}{% assign pi = t | remove: 'pinterest-' %}{% endif %}
+						{% if t contains "email" %}{% assign email = t | remove: 'email-' %}{% endif %}
+						{% if t contains "title" %}{% assign title = t | remove: 'title-' %}{% endif %}
+					{% endfor %}
+
+					<div class="team-member cf">
+						<div class="team-img">{{article.excerpt}}</div>
+						<div class="team-about">
+							<h2>{{article.title}}</h2>
+							<h3>{{title}}</h3>
+							<div class="team-social">	
+								{% if email %}<a class="email" href="{{email}}"><i class="fa fa-envelope"></i></a></a>{% endif %}
+								{% if tw %}<a href="{{tw}}"><i class="fa fa-twitter"></i></a></a>{% endif %}
+								{% if fb %}<a href="{{fb}}"><i class="fa fa-facebook"></i></a></a>{% endif %}
+								{% if pi %}<a href="{{tw}}"><i class="fa fa-pinterest"></i></a></a>{% endif %}
+							</div>
+						</div>
+						<div class="team-bio cf">
+						{{article.content}}
+						</div>
+						
+					</div>
+
+				{% endfor %}
+			
+			{% else %}
+				{{ page.content }}
+			{% endif %}
+		</div>
+		
+		
+	</div>
+</div>

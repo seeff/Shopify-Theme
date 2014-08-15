@@ -1,0 +1,2235 @@
+<fieldset>
+  <legend>Homepage</legend>
+  <table>
+
+    <tr>
+      <td colspan="2">
+        <h3>Slideshow banner</h3>
+        For best results, upload images that are at least 966px wide. Try to keep your slideshow images the same size.
+      </td>
+    </tr>
+    <tr>
+    <td width="25"><input type="checkbox" id="triple" name="triple" value="1" /></td>
+      <td><label>Show Triple Panels?</label></td>
+  </tr>
+  <tr>
+    <td width="25"><input type="checkbox" id="slideshow" name="slideshow" value="1" /></td>
+      <td><label>Show Panoramic Slideshow?</label></td>
+  </tr>
+    
+    <tr>
+      <td colspan="2">
+
+      <table class="standard-table">
+        <tr>
+          <td colspan="2"></td>
+          <td>Image</td>
+          <td>Links to</td>
+        </tr>
+        <tr class="odd">
+          <td width="25"><input type="checkbox" id="slide_1" name="slide_1" value="1" /></td>
+          <td colspan="3"><label>Slide #1</label></td>
+        </tr>
+        <tr class="even">
+          <td><input type="file" id="slide_1" name="slideshow_1.jpg" data-max-width="966" /></td>
+          <td><input type="text" id="slide_1_btn_text" name="slide_1_btn_text" value="/collections/all" size="30" /></td>
+          <td><input type="text" id="slide_1_h1" name="slide_1_h1" value="Prosthetic Leg Covers" size="30" /></td>
+          <td><input type="text" id="slide_1_btn" name="slide_1_btn" value="/collections/all" size="30" /></td>
+        </tr>
+        <tr class="odd">
+          <td><label>Mobile Image</label></td>
+          <td><input type="file" id="slide_1_mobile" name="slideshow_1_mobile.jpg" data-max-width="966" /></td>
+        </tr>
+      </table>
+
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Page Graphics</legend>
+  <table>
+    <tr>
+      <th><label>Contact Page Top Graphic</label></th>
+      <td>Show? <input type="checkbox" id="show_contact_image" name="show_contact_image" value="1" /></td>
+      <td><input type="file" id="contact_top_image" name="contact-image.jpg" /></td>
+    </tr>
+  </table>
+  
+</fieldset>
+
+<fieldset>
+  <legend>Product Page</legend>
+  <table>
+    <tr class="horizontal">
+      <th><label for="enable_product_image_zoom">Enable image zoom feature?</label></th>
+      <td><input type="checkbox" id="enable_product_image_zoom" name="enable_product_image_zoom" value="1" /></td>
+    </tr>
+    <tr class="horizontal">
+      <th><label for="show_related_products">Display related products?</label><small>(only visible when within a collection)</small></th>
+      <td><input type="checkbox" id="show_related_products" name="show_related_products" value="1" checked="checked" /></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Social Settings</legend>
+  <table>
+    <tr>
+     <td colspan="2">
+      <table class="standard-table">
+            <tr>
+              <td width="25">Show?</td>
+              <td>&nbsp;</td>
+              <td>Links to</td>
+          <td>&nbsp;</td>
+            </tr>
+            <tr class="odd">
+              <td width="25"><input type="checkbox" id="facebook" name="facebook" value="1" /></td>
+              <td><label>Facebook</label></td>
+              <td colspan="2"><input type="text" id="facebook_url" name="facebook_url" value="" size="60%" /></td>
+            </tr>
+            <tr class="even">
+              <td><input type="checkbox" id="twitter" name="twitter" value="1"/></td>
+              <td><label>Twitter</label></td>
+              <td colspan="2"><input type="text" id="twitter_url" name="twitter_url" value="" size="60%" /></td>
+            </tr>
+            <tr class="odd">
+              <td><input type="checkbox" id="instagram" name="instagram" value="1" /></td>
+              <td><label>Instagram</label></td>
+              <td colspan="2"><input type="text" id="instagram_url" name="instagram_url" size="60%" /></td>
+            </tr>
+            <tr class="even">
+              <td><input type="checkbox" id="pinterest" name="pinterest" value="1" /></td>
+              <td><label>Pinterest</label></td>
+              <td colspan="2"><input type="text" id="pinterest_url" name="pinterest_url" size="60%" /></td>
+            </tr>
+        <tr class="odd">
+              <td><input type="checkbox" id="youtube" name="youtube" value="1" /></td>
+              <td><label>Youtube</label></td>
+              <td colspan="2"><input type="text" id="youtube_url" name="youtube_url" size="60%" /></td>
+            </tr>
+        <tr class="even">
+              <td><input type="checkbox" id="mailchimp" name="mailchimp" value="1" /></td>
+              <td><label>Mailchimp Signup</label></td>
+              <td colspan="2"><input type="text" id="mailchimp_action" name="mailchimp_action" size="100%" /></td>
+            </tr>
+          </table>
+    </td>
+    </tr>
+    </table>
+</fieldset>
+
+
+<!-- this is just daniel playing around -->
+<fieldset>
+  <legend>Site Language</legend>
+  <table>
+    <tr>
+      <td><label>Site Language</label></td>
+      <td>
+        <select name="language" id="language">
+          <option value="en" selected="selected">English</option>
+          <option value="es">Spanish</option>
+          <option value="de">German</option>
+          <option value="fr">French</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Global Translations</legend>
+  <table>
+    <tr>
+      <td><label>Search - English</label></td>
+      <td><input type="text" id="search_en" name="search_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Search - Spanish</label></td>
+      <td><input type="text" id="search_es" name="search_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Search - German</label></td>
+      <td><input type="text" id="search_de" name="search_de" size="30"/></td>
+    </tr>
+    <tr><td colspan="2"><hr/></td></tr>
+    <tr>
+      <td><label>Login - English</label></td>
+      <td><input type="text" id="login_en" name="login_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Login - Spanish</label></td>
+      <td><input type="text" id="login_es" name="login_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Login - German</label></td>
+      <td><input type="text" id="login_de" name="login_de" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Logout - English</label></td>
+      <td><input type="text" id="logout_en" name="logout_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Logout - Spanish</label></td>
+      <td><input type="text" id="logout_es" name="logout_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Logout - German</label></td>
+      <td><input type="text" id="logout_de" name="logout_de" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>My Account - English</label></td>
+      <td><input type="text" id="my_account_en" name="my_account_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>My Account - Spanish</label></td>
+      <td><input type="text" id="my_account_es" name="my_account_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>My Account - German</label></td>
+      <td><input type="text" id="my_account_de" name="my_account_de" size="30"/></td>
+    </tr>
+    <tr><td colspan="2"><hr/></td></tr>
+    <tr>
+      <td><label>Cart - English</label></td>
+      <td><input type="text" id="cart_en" name="cart_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Cart - Spanish</label></td>
+      <td><input type="text" id="cart_es" name="cart_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Cart - German</label></td>
+      <td><input type="text" id="cart_de" name="cart_de" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Price - English</label></td>
+      <td><input type="text" id="price_en" name="price_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Price - Spanish</label></td>
+      <td><input type="text" id="price_es" name="price_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Price - German</label></td>
+      <td><input type="text" id="price_de" name="price_de" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Quantity - English</label></td>
+      <td><input type="text" id="qty_en" name="qty_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Quantity - Spanish</label></td>
+      <td><input type="text" id="qty_es" name="qty_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Quantity - German</label></td>
+      <td><input type="text" id="qty_de" name="qty_de" size="30"/></td>
+    </tr>
+  <tr>
+      <td><label>Remove - English</label></td>
+      <td><input type="text" id="remove_en" name="remove_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Remove - Spanish</label></td>
+      <td><input type="text" id="remove_es" name="remove_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Remove - German</label></td>
+      <td><input type="text" id="remove_de" name="remove_de" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>View Cart - English</label></td>
+      <td><input type="text" id="view_cart_en" name="view_cart_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>View Cart - Spanish</label></td>
+      <td><input type="text" id="view_cart_es" name="view_cart_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>View Cart - German</label></td>
+      <td><input type="text" id="view_cart_de" name="view_cart_de" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Subtotal - English</label></td>
+      <td><input type="text" id="subtotal_en" name="subtotal_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Subtotal - Spanish</label></td>
+      <td><input type="text" id="subtotal_es" name="subtotal_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Subtotal - German</label></td>
+      <td><input type="text" id="subtotal_de" name="subtotal_de" size="30"/></td>
+    </tr>
+  <tr>
+      <td><label>Total Header - English</label></td>
+      <td><input type="text" id="total_en" name="total_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Total Header - Spanish</label></td>
+      <td><input type="text" id="total_es" name="total_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Total Header - German</label></td>
+      <td><input type="text" id="total_de" name="total_de" size="30" /></td>
+    </tr>
+    <tr><td colspan="2"><hr/></td></tr>
+    <tr>
+      <td><label>Mailing List - English</label></td>
+      <td><input type="text" id="mailing_list_en" name="mailing_list_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Mailing List - Spanish</label></td>
+      <td><input type="text" id="mailing_list_es" name="mailing_list_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Mailing List - German</label></td>
+      <td><input type="text" id="mailing_list_de" name="mailing_list_de" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Enter Email - English</label></td>
+      <td><input type="text" id="enter_email_en" name="enter_email_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Enter Email - Spanish</label></td>
+      <td><input type="text" id="enter_email_es" name="enter_email_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>Enter Email - German</label></td>
+      <td><input type="text" id="enter_email_de" name="enter_email_de" size="30"/></td>
+    </tr>
+    <tr><td colspan="2"><hr/></td></tr>
+    <tr>
+      <td><label>All Rights Reserved - English</label></td>
+      <td><input type="text" id="rights_en" name="rights_en" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>All Rights Reserved - Spanish</label></td>
+      <td><input type="text" id="rights_es" name="rights_es" size="30"/></td>
+    </tr>
+    <tr>
+      <td><label>All Rights Reserved - German</label></td>
+      <td><input type="text" id="rights_de" name="rights_de" size="30"/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><label>Submit Button - English</label></td>
+      <td><input type="text" id="submit_button_en" name="submit_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Submit Button  - Spanish</label></td>
+      <td><input type="text" id="submit_button_es" name="submit_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Submit Button  - German</label></td>
+      <td><input type="text" id="submit_button_de" name="submit_button_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Index Translations</legend>
+  <table>
+    <tr>
+      <td><label>Home Page H1 - English</label></td>
+      <td><input type="text" id="home_h1_en" name="home_h1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Home Page H1 - Spanish</label></td>
+      <td><input type="text" id="home_h1_es" name="home_h1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Home Page H1 - German</label></td>
+      <td><input type="text" id="home_h1_de" name="home_h1_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Below Hero h1 - English</label></td>
+      <td><input type="text" id="home_sub_h1_en" name="home_sub_h1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Below Hero h1 - Spanish</label></td>
+      <td><input type="text" id="home_sub_h1_es" name="home_sub_h1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Below Hero h1 - German</label></td>
+      <td><input type="text" id="home_sub_h1_de" name="home_sub_h1_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Hero Btn - English</label></td>
+      <td><input type="text" id="home_hero_btn_en" name="home_hero_btn_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Hero Btn - Spanish</label></td>
+      <td><input type="text" id="home_hero_btn_es" name="home_hero_btn_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Hero Btn - German</label></td>
+      <td><input type="text" id="home_hero_btn_de" name="home_hero_btn_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Hero Btn Below - English</label></td>
+      <td><input type="text" id="home_hero_below_btn_en" name="home_hero_below_btn_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Hero Btn Below - Spanish</label></td>
+      <td><input type="text" id="home_hero_below_btn_es" name="home_hero_below_btn_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Hero Btn Below - German</label></td>
+      <td><input type="text" id="home_hero_below_btn_de" name="home_hero_below_btn_de" size="30" /></td>
+    </tr>
+    <tr>
+        <td><label>Hero Btn Link - English</label></td>
+        <td><input type="text" id="home_hero_link_en" name="home_hero_link_en" size="30" /></td>
+      </tr>
+    <tr>
+        <td><label>Hero Btn Link - Spanish</label></td>
+        <td><input type="text" id="home_hero_link_es" name="home_hero_link_es" size="30" /></td>
+      </tr>
+    <tr>
+        <td><label>Hero Btn Link - German</label></td>
+        <td><input type="text" id="home_hero_link_de" name="home_hero_link_de" size="30" /></td>
+      </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><label>Browse Carousel Heading - English</label></td>
+      <td><input type="text" id="browse_heading_en" name="browse_heading_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Browse Carousel Heading - Spanish</label></td>
+      <td><input type="text" id="browse_heading_es" name="browse_heading_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Browse Carousel Heading - German</label></td>
+      <td><input type="text" id="browse_heading_de" name="browse_heading_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><label>Section 1 Heading - English</label></td>
+      <td><input type="text" id="section_1_heading_en" name="section_1_heading_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Section 1 Heading - Spanish</label></td>
+      <td><input type="text" id="section_1_heading_es" name="section_1_heading_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Section 1 Heading - German</label></td>
+      <td><input type="text" id="section_1_heading_de" name="section_1_heading_de" size="30" /></td>
+    </tr>
+
+    <tr>
+      <td><label>Section 1 Paragraph - English</label></td>
+      <td><textarea id="section_1_p_en" name="section_1_p_en"></textarea></td>
+    </tr>
+    <tr>
+      <td><label>Section 1 Paragraph - Spanish</label></td>
+      <td><textarea id="section_1_p_es" name="section_1_p_es"></textarea></td>
+    </tr>
+    <tr>
+      <td><label>Section 1 Paragraph - German</label></td>
+      <td><textarea id="section_1_p_de" name="section_1_p_de"></textarea></td>
+    </tr>
+
+    <tr>
+      <td><label>Section 1 Btn - English</label></td>
+      <td><input type="text" id="section_1_btn_en" name="section_1_btn_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Section 1 Btn - Spanish</label></td>
+      <td><input type="text" id="section_1_btn_es" name="section_1_btn_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Section 1 Btn - German</label></td>
+      <td><input type="text" id="section_1_btn_de" name="section_1_btn_de" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Collections Page Link - English</label></td>
+      <td><input type="text" id="collections_page_link_en" name="collections_page_link_en" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Collections Page Link - Spanish</label></td>
+      <td><input type="text" id="collections_page_link_es" name="collections_page_link_es" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Collections Page Link - German</label></td>
+      <td><input type="text" id="collections_page_link_de" name="collections_page_link_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><label>Section 2 Heading - English</label></td>
+      <td><input type="text" id="section_2_heading_en" name="section_2_heading_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Section 2 Heading - Spanish</label></td>
+      <td><input type="text" id="section_2_heading_es" name="section_2_heading_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Section 2 Heading - German</label></td>
+      <td><input type="text" id="section_2_heading_de" name="section_2_heading_de" size="30" /></td>
+    </tr>
+
+    <tr>
+      <td><label>Section 2 Paragraph - English</label></td>
+      <td><textarea id="section_2_p_en" name="section_2_p_en"></textarea></td>
+    </tr>
+    <tr>
+      <td><label>Section 2 Paragraph - Spanish</label></td>
+      <td><textarea id="section_2_p_es" name="section_2_p_es"></textarea></td>
+    </tr>
+    <tr>
+      <td><label>Section 2 Paragraph - German</label></td>
+      <td><textarea id="section_2_p_de" name="section_2_p_de"></textarea></td>
+    </tr>
+
+    <tr>
+      <td><label>Section 2 Btn - English</label></td>
+      <td><input type="text" id="section_2_btn_en" name="section_2_btn_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Section 2 Btn - Spanish</label></td>
+      <td><input type="text" id="section_2_btn_es" name="section_2_btn_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Section 2 Btn - German</label></td>
+      <td><input type="text" id="section_2_btn_de" name="section_2_btn_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><label>Video Text - English</label></td>
+      <td><input type="text" id="video_text_en" name="video_text_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Video Text - Spanish</label></td>
+      <td><input type="text" id="video_text_es" name="video_text_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Video Text - German</label></td>
+      <td><input type="text" id="video_text_de" name="video_text_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Featured In - English</label></td>
+      <td><input type="text" id="featured_in_en" name="featured_in_en" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Featured In - Spanish</label></td>
+      <td><input type="text" id="featured_in_es" name="featured_in_es" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Featured In - German</label></td>
+      <td><input type="text" id="featured_in_de" name="featured_in_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><label>CTA 1 - English</label></td>
+      <td><input type="text" id="cta_1_en" name="cta_1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>CTA 1 - Spanish</label></td>
+      <td><input type="text" id="cta_1_es" name="cta_1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>CTA 1 - German</label></td>
+      <td><input type="text" id="cta_1_de" name="cta_1_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>CTA 2 - English</label></td>
+      <td><input type="text" id="cta_2_en" name="cta_2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>CTA 2 - Spanish</label></td>
+      <td><input type="text" id="cta_2_es" name="cta_2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>CTA 2 - German</label></td>
+      <td><input type="text" id="cta_2_de" name="cta_2_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>CTA 3 - English</label></td>
+      <td><input type="text" id="cta_3_en" name="cta_3_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>CTA 3 - Spanish</label></td>
+      <td><input type="text" id="cta_3_es" name="cta_3_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>CTA 3 - German</label></td>
+      <td><input type="text" id="cta_3_de" name="cta_3_de" size="30" /></td>
+    </tr>
+      <tr>
+      <td><label>Link to Clinicians Page - English</label></td>
+      <td><input type="text" id="clinicians_link_en" name="clinicians_link_en" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Link to Clinicians Page - Spanish</label></td>
+      <td><input type="text" id="clinicians_link_es" name="clinicians_link_es" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Link to Clinicians Page - German</label></td>
+      <td><input type="text" id="clinicians_link_de" name="clinicians_link_de" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Link to Community Page - English</label></td>
+      <td><input type="text" id="community_link_en" name="community_link_en" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Link to Community Page - Spanish</label></td>
+      <td><input type="text" id="community_link_es" name="community_link_es" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Link to Community Page - German</label></td>
+      <td><input type="text" id="community_link_de" name="community_link_de" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Link to Gift Card Page - English</label></td>
+      <td><input type="text" id="gift_card_link_en" name="gift_card_link_en" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Link to Gift Card Page - Spanish</label></td>
+      <td><input type="text" id="gift_card_link_es" name="gift_card_link_es" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Link to Gift Card - German</label></td>
+      <td><input type="text" id="gift_card_link_de" name="gift_card_link_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>404 Translations</legend>
+  <table>
+    <tr>
+      <td><label>404 h1 - English</label></td>
+      <td><input type="text" id="404_h1_en" name="404_h1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>404 h1 - Spanish</label></td>
+      <td><input type="text" id="404_h1_es" name="404_h1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>404 h1 - German</label></td>
+      <td><input type="text" id="404_h1_de" name="404_h1_de" size="30" /></td>
+    </tr>
+        <tr>
+      <td><label>404 h2 - English</label></td>
+      <td><input type="text" id="404_h2_en" name="404_h2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>404 h2 - Spanish</label></td>
+      <td><input type="text" id="404_h2_es" name="404_h2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>404 h2 - German</label></td>
+      <td><input type="text" id="404_h2_de" name="404_h2_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Blog / Article Translations</legend>
+  <table>
+    <tr>
+      <td><label>Title H1 - English</label></td>
+      <td><input type="text" id="blog_h1_en" name="blog_h1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Title H1 - Spanish</label></td>
+      <td><input type="text" id="blog_h1_es" name="blog_h1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Title H1 - German</label></td>
+      <td><input type="text" id="blog_h1_de" name="blog_h1_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Posted By - English</label></td>
+      <td><input type="text" id="blog_posted_by_en" name="blog_posted_by_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Posted By - Spanish</label></td>
+      <td><input type="text" id="blog_posted_by_es" name="blog_posted_by_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Posted By - German</label></td>
+      <td><input type="text" id="blog_posted_by_de" name="blog_posted_by_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Read More - English</label></td>
+      <td><input type="text" id="blog_read_more_en" name="blog_read_more_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Read More - Spanish</label></td>
+      <td><input type="text" id="blog_read_more_es" name="blog_read_more_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Read More - German</label></td>
+      <td><input type="text" id="blog_read_more_de" name="blog_read_more_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Share - English</label></td>
+      <td><input type="text" id="blog_share_en" name="blog_share_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Share - Spanish</label></td>
+      <td><input type="text" id="blog_share_es" name="blog_share_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Share - German</label></td>
+      <td><input type="text" id="blog_share_de" name="blog_share_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Other FAQ Under "Category" - English</label></td>
+      <td><input type="text" id="blog_other_faq_en" name="blog_other_faq_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Other FAQ Under "Category" - Spanish</label></td>
+      <td><input type="text" id="blog_other_faq_es" name="blog_other_faq_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Other FAQ Under "Category" - German</label></td>
+      <td><input type="text" id="blog_other_faq_de" name="blog_other_faq_des" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Next Post - English</label></td>
+      <td><input type="text" id="blog_next_post_en" name="blog_next_post_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Next Post - Spanish</label></td>
+      <td><input type="text" id="blog_next_post_es" name="blog_next_post_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Next Post - German</label></td>
+      <td><input type="text" id="blog_next_post_de" name="blog_next_post_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Previous Post - English</label></td>
+      <td><input type="text" id="blog_previous_post_en" name="blog_previous_post_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Previous Post - Spanish</label></td>
+      <td><input type="text" id="blog_previous_post_es" name="blog_previous_post_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Previous Post - German</label></td>
+      <td><input type="text" id="blog_previous_post_de" name="blog_previous_post_de" size="30" /></td>
+    </tr>  
+  </table>
+</fieldset>
+
+
+<fieldset>
+  <legend>Cart Translations</legend>
+  <table>
+    <tr>
+      <td><label>Title H1 - English</label></td>
+      <td><input type="text" id="cart_h1_en" name="cart_h1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Title H1 - Spanish</label></td>
+      <td><input type="text" id="cart_h1_es" name="cart_h1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Title H1 - German</label></td>
+      <td><input type="text" id="cart_h1_de" name="cart_h1_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Item Header - English</label></td>
+      <td><input type="text" id="cart_item_en" name="cart_item_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Item Header - Spanish</label></td>
+      <td><input type="text" id="cart_item_es" name="cart_item_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Item Header - German</label></td>
+      <td><input type="text" id="cart_item_de" name="cart_item_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Remove Header - English</label></td>
+      <td><input type="text" id="cart_remove_en" name="cart_remove_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Remove Header - Spanish</label></td>
+      <td><input type="text" id="cart_remove_es" name="cart_remove_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Remove Header - German</label></td>
+      <td><input type="text" id="cart_remove_de" name="cart_remove_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Keep Shopping Link - English</label></td>
+      <td><input type="text" id="cart_keep_shopping_link_en" name="cart_keep_shopping_link_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Keep Shopping Link - Spanish</label></td>
+      <td><input type="text" id="cart_keep_shopping_link_es" name="cart_keep_shopping_link_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Keep Shopping Link - German</label></td>
+      <td><input type="text" id="cart_keep_shopping_link_de" name="cart_keep_shopping_link_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Update Cart - English</label></td>
+      <td><input type="text" id="cart_update_en" name="cart_update_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Update Cart - Spanish</label></td>
+      <td><input type="text" id="cart_update_es" name="cart_update_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Update Cart - German</label></td>
+      <td><input type="text" id="cart_update_de" name="cart_update_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Check Out - English</label></td>
+      <td><input type="text" id="cart_checkout_en" name="cart_checkout_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Check Out - Spanish</label></td>
+      <td><input type="text" id="cart_checkout_es" name="cart_checkout_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Check Out - German</label></td>
+      <td><input type="text" id="cart_checkout_de" name="cart_checkout_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Collection Translations</legend>
+  <table>
+    <tr>
+      <td><label>If Empty - English</label></td>
+      <td><input type="text" id="collection_empty_en" name="collection_empty_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>If Empty - Spanish</label></td>
+      <td><input type="text" id="collection_empty_es" name="collection_empty_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>If Empty- German</label></td>
+      <td><input type="text" id="collection_empty_de" name="collection_empty_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Header - English</label></td>
+      <td><input type="text" id="collections_h1_en" name="collections_h1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Header - Spanish</label></td>
+      <td><input type="text" id="collections_h1_es" name="collections_h1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Header- German</label></td>
+      <td><input type="text" id="collections_h1_de" name="collections_h1_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Customer Translations</legend>
+  <table>
+    <tr>
+      <td><label>Email Label - English</label></td>
+      <td><input type="text" id="email_label_en" name="email_label_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Label - Spanish</label></td>
+      <td><input type="text" id="email_label_es" name="email_label_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Label  - German</label></td>
+      <td><input type="text" id="email_label_de" name="email_label_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Password Label - English</label></td>
+      <td><input type="text" id="password_label_en" name="password_label_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Password Label - Spanish</label></td>
+      <td><input type="text" id="password_label_es" name="password_label_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Password Label  - German</label></td>
+      <td><input type="text" id="password_label_de" name="password_label_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Password Confirmation Label - English</label></td>
+      <td><input type="text" id="password_confirm_label_en" name="password_confirm_label_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Password Confirmation Label - Spanish</label></td>
+      <td><input type="text" id="password_confirm_label_es" name="password_confirm_label_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Password Confirmation Label - German</label></td>
+      <td><input type="text" id="password_confirm_label_de" name="password_confirm_label_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>First Name Label - English</label></td>
+      <td><input type="text" id="firstname_label_en" name="firstname_label_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>First Name Label - Spanish</label></td>
+      <td><input type="text" id="firstname_label_es" name="firstname_label_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>First Name Label - German</label></td>
+      <td><input type="text" id="firstname_label_de" name="firstname_label_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Last Name Label - English</label></td>
+      <td><input type="text" id="lastname_label_en" name="lastname_label_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Last Name Label - Spanish</label></td>
+      <td><input type="text" id="lastname_label_es" name="lastname_label_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Last Name Label - German</label></td>
+      <td><input type="text" id="lastname_label_de" name="lastname_label_de" size="30" /></td>
+    </tr>    
+    <tr>
+      <td><label>Cancel Button - English</label></td>
+      <td><input type="text" id="cancel_button_en" name="cancel_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Cancel Button - Spanish</label></td>
+      <td><input type="text" id="cancel_button_es" name="cancel_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Cancel Button - German</label></td>
+      <td><input type="text" id="cancel_button_de" name="cancel_button_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Return To Account Page - English</label></td>
+      <td><input type="text" id="return_to_account_page_en" name="return_to_account_page_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Return To Account Page - Spanish</label></td>
+      <td><input type="text" id="return_to_account_page_es" name="return_to_account_page_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Return To Account Page - German</label></td>
+      <td><input type="text" id="return_to_account_page_de" name="return_to_account_page_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Return To Store Page - English</label></td>
+      <td><input type="text" id="return_to_store_en" name="return_to_store_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Return To Store Page - Spanish</label></td>
+      <td><input type="text" id="return_to_store_es" name="return_to_store_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Return To Store Page - German</label></td>
+      <td><input type="text" id="return_to_store_de" name="return_to_store_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>    
+    <tr>
+      <td><label>Account Title H2 - English</label></td>
+      <td><input type="text" id="customer_h2_en" name="customer_h2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Account Title H2  - Spanish</label></td>
+      <td><input type="text" id="customer_h2_es" name="customer_h2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Account Title H2 - German</label></td>
+      <td><input type="text" id="customer_h2_de" name="customer_h2_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Account Address Header - English</label></td>
+      <td><input type="text" id="customer_addresses_h3_en" name="customer_addresses_h3_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Account Address Header - Spanish</label></td>
+      <td><input type="text" id="customer_addresses_h3_es" name="customer_addresses_h3_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Account Address Header - German</label></td>
+      <td><input type="text" id="customer_addresses_h3_de" name="customer_addresses_h3_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Logout Button - English</label></td>
+      <td><input type="text" id="customer_logout_en" name="customer_logout_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Logout Button - Spanish</label></td>
+      <td><input type="text" id="customer_logout_es" name="customer_logout_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Logout Button - German</label></td>
+      <td><input type="text" id="customer_logout_de" name="customer_logout_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><label>Checkout as Guest - English</label></td>
+      <td><input type="text" id="login_checkout_guest_en" name="login_checkout_guest_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Checkout as Guest - Spanish</label></td>
+      <td><input type="text" id="login_checkout_guest_es" name="login_checkout_guest_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Checkout as Guest - German</label></td>
+      <td><input type="text" id="login_checkout_guest_de" name="login_checkout_guest_de" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>No Account Yet? Msg - English</label></td>
+      <td><textarea type="text" id="login_no_account_yet_en" name="login_no_account_yet_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>No Account Yet? Msg - Spanish</label></td>
+      <td><textarea type="text" id="login_no_account_yet_es" name="login_no_account_yet_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>No Account Yet? Msg - German</label></td>
+      <td><textarea type="text" id="login_no_account_yet_de" name="login_no_account_yet_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Login Header - English</label></td>
+      <td><input type="text" id="login_h2_en" name="login_h2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Login Header - Spanish</label></td>
+      <td><input type="text" id="login_h2_es" name="login_h2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Login Header- German</label></td>
+      <td><input type="text" id="login_h2_de" name="login_h2_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Login as Guest - English</label></td>
+      <td><input type="text" id="login_as_guest_en" name="login_as_guest_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Login as Guest - Spanish</label></td>
+      <td><input type="text" id="login_as_guest_es" name="login_as_guest_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Login as Guest - German</label></td>
+      <td><input type="text" id="login_as_guest_de" name="login_as_guest_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Forgot Password Link - English</label></td>
+      <td><input type="text" id="login_forgot_password_en" name="login_forgot_password_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Forgot Password Link - Spanish</label></td>
+      <td><input type="text" id="login_forgot_password_es" name="login_forgot_password_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Forgot Password Link - German</label></td>
+      <td><input type="text" id="login_forgot_password_de" name="login_forgot_password_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Forgot Password Link Header - English</label></td>
+      <td><input type="text" id="login_reset_password_en" name="login_reset_password_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Forgot Password Header - Spanish</label></td>
+      <td><input type="text" id="login_reset_password_es" name="login_reset_password_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Forgot Password Header - German</label></td>
+      <td><input type="text" id="login_reset_password_de" name="login_reset_password_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Forgot Password Note - English</label></td>
+      <td><input type="text" id="login_reset_password_note_en" name="login_reset_password_note_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Forgot Password Note - Spanish</label></td>
+      <td><input type="text" id="login_reset_password_note_es" name="login_reset_password_note_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Forgot Password Note - German</label></td>
+      <td><input type="text" id="login_reset_password_note_de" name="login_reset_password_note_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Reset Account Password Header - English</label></td>
+      <td><input type="text" id="reset_account_password_h2_en" name="reset_account_password_h2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Reset Account Password Header - Spanish</label></td>
+      <td><input type="text" id="reset_account_password_h2_es" name="reset_account_password_h2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Reset Account Password Header - German</label></td>
+      <td><input type="text" id="reset_account_password_h2_de" name="reset_account_password_h2_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Enter New Password Prompt - English</label></td>
+      <td><input type="text" id="enter_new_password_prompt_en" name="enter_new_password_prompt_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Enter New Password Prompt - Spanish</label></td>
+      <td><input type="text" id="enter_new_password_prompt_es" name="enter_new_password_prompt_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Enter New Password Prompt - German</label></td>
+      <td><input type="text" id="enter_new_password_prompt_de" name="enter_new_password_prompt_de" size="30" /></td>
+    </tr>    
+    <tr>
+      <td><label>Submit New Password - English</label></td>
+      <td><input type="text" id="reset_password_submit_en" name="reset_password_submit_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Submit New Password - Spanish</label></td>
+      <td><input type="text" id="reset_password_submit_es" name="reset_password_submit_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Submit New Password - German</label></td>
+      <td><input type="text" id="reset_password_submit_de" name="reset_password_submit_de" size="30" /></td>
+    </tr>    
+    <tr>
+      <td><label>Create Account Header- English</label></td>
+      <td><input type="text" id="login_create_account_h2_en" name="create_account_h2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Create Account Header - Spanish</label></td>
+      <td><input type="text" id="login_create_account_h2_es" name="create_account_h2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Create Account Header - German</label></td>
+      <td><input type="text" id="login_create_account_h2_de" name="create_account_h2_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Create Button - English</label></td>
+      <td><input type="text" id="create_button_en" name="create_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Create Button  - Spanish</label></td>
+      <td><input type="text" id="create_button_es" name="create_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Create Button  - German</label></td>
+      <td><input type="text" id="create_button_de" name="create_button_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Sign In Button - English</label></td>
+      <td><input type="text" id="sign_in_button_en" name="sign_in_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Sign In Button  - Spanish</label></td>
+      <td><input type="text" id="sign_in_button_es" name="sign_in_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Sign In Button  - German</label></td>
+      <td><input type="text" id="sign_in_button_de" name="sign_in_button_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><label>Order Label - English</label></td>
+      <td><input type="text" id="customer_order_en" name="customer_order_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Label - Spanish</label></td>
+      <td><input type="text" id="customer_order_es" name="customer_order_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Label - German</label></td>
+      <td><input type="text" id="customer_order_de" name="customer_order_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Date Label - English</label></td>
+      <td><input type="text" id="customer_order_date_en" name="customer_order_date_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Date Label - Spanish</label></td>
+      <td><input type="text" id="customer_order_date_es" name="customer_order_date_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Date Label - German</label></td>
+      <td><input type="text" id="customer_order_date_de" name="customer_order_date_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Payment Status Label - English</label></td>
+      <td><input type="text" id="customer_order_payment_en" name="customer_order_payment_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Payment Status Label - Spanish</label></td>
+      <td><input type="text" id="customer_order_payment_es" name="customer_order_payment_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Payment Status Label - German</label></td>
+      <td><input type="text" id="customer_order_payment_de" name="customer_order_payment_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Fulfillment Status Label - English</label></td>
+      <td><input type="text" id="customer_order_fulfillment_en" name="customer_order_fulfillment_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Fulfillment Status Label - Spanish</label></td>
+      <td><input type="text" id="customer_order_fulfillment_es" name="customer_order_fulfillment_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Fulfillment Status Label - German</label></td>
+      <td><input type="text" id="customer_order_fulfillment_de" name="customer_order_fulfillment_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>No Orders Message - English</label></td>
+      <td><input type="text" id="customer_no_orders_en" name="customer_no_orders_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>No Orders Message - Spanish</label></td>
+      <td><input type="text" id="customer_no_orders_es" name="customer_no_orders_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>No Orders Message  - German</label></td>
+      <td><input type="text" id="customer_no_orders_de" name="customer_no_orders_de" size="30" /></td>
+    </tr>
+    
+    <tr>
+      <td><label>Order Cancelled - English</label></td>
+      <td><input type="text" id="order_cancelled_en" name="order_cancelled_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Cancelled - Spanish</label></td>
+      <td><input type="text" id="order_cancelled_es" name="order_cancelled_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Cancelled - German</label></td>
+      <td><input type="text" id="order_cancelled_de" name="order_cancelled_de" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Order Cancelled "On" - English</label></td>
+      <td><input type="text" id="order_cancelled_on_en" name="order_cancelled_on_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Cancelled "On" - Spanish</label></td>
+      <td><input type="text" id="order_cancelled_on_es" name="order_cancelled_on_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Cancelled "On" - German</label></td>
+      <td><input type="text" id="order_cancelled_on_de" name="order_cancelled_on_de" size="30" /></td>
+    </tr>    
+    <tr>
+      <td><label>Order Placed On - English</label></td>
+      <td><input type="text" id="order_placed_on_en" name="order_placed_on_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Placed On - Spanish</label></td>
+      <td><input type="text" id="order_placed_on_es" name="order_placed_on_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Placed On - German</label></td>
+      <td><input type="text" id="order_placed_on_de" name="order_placed_on_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Billing Address - English</label></td>
+      <td><input type="text" id="order_billing_address_en" name="order_billing_address_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Billing Address - Spanish</label></td>
+      <td><input type="text" id="order_billing_address_es" name="order_billing_address_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Billing Address - German</label></td>
+      <td><input type="text" id="order_billing_address_de" name="order_billing_address_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Shipping Address - English</label></td>
+      <td><input type="text" id="order_shipping_address_en" name="order_shipping_address_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Shipping Address - Spanish</label></td>
+      <td><input type="text" id="order_shipping_address_es" name="order_shipping_address_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Shipping Address - German</label></td>
+      <td><input type="text" id="order_shipping_address_de" name="order_shipping_address_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Product - English</label></td>
+      <td><input type="text" id="order_details_product_en" name="order_details_product_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Product - Spanish</label></td>
+      <td><input type="text" id="order_details_product_es" name="order_details_product_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Product - German</label></td>
+      <td><input type="text" id="order_details_product_de" name="order_details_product_de" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Order Details: SKU - English</label></td>
+      <td><input type="text" id="order_details_sku_en" name="order_details_sku_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: SKU - Spanish</label></td>
+      <td><input type="text" id="order_details_sku_es" name="order_details_sku_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: SKU - German</label></td>
+      <td><input type="text" id="order_details_sku_de" name="order_details_sku_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Discount - English</label></td>
+      <td><input type="text" id="order_details_discount_en" name="order_details_discount_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Discount - Spanish</label></td>
+      <td><input type="text" id="order_details_discount_es" name="order_details_discount_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Discount - German</label></td>
+      <td><input type="text" id="order_details_discount_de" name="order_details_discount_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Shipping - English</label></td>
+      <td><input type="text" id="order_details_shipping_en" name="order_details_shipping_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Shipping - Spanish</label></td>
+      <td><input type="text" id="order_details_shipping_es" name="order_details_shipping_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Shipping - German</label></td>
+      <td><input type="text" id="order_details_shipping_de" name="order_details_shipping_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Tax - English</label></td>
+      <td><input type="text" id="order_details_tax_en" name="order_details_tax_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Tax - Spanish</label></td>
+      <td><input type="text" id="order_details_tax_es" name="order_details_tax_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Order Details: Tax - German</label></td>
+      <td><input type="text" id="order_details_tax_de" name="order_details_tax_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><label>Activate Title H1 - English</label></td>
+      <td><input type="text" id="activate_title_h1_en" name="activate_title_h1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Activate Title H1 - Spanish</label></td>
+      <td><input type="text" id="activate_title_h1_es" name="activate_title_h1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Activate Title H1  - German</label></td>
+      <td><input type="text" id="activate_title_h1_de" name="activate_title_h1_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Activate Password Msg - English</label></td>
+      <td><input type="text" id="activate_password_msg_en" name="activate_password_msg_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Activate Password Msg - Spanish</label></td>
+      <td><input type="text" id="activate_password_msg_es" name="activate_password_msg_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Activate Password Msg  - German</label></td>
+      <td><input type="text" id="activate_password_msg_de" name="activate_password_msg_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Activate Button - English</label></td>
+      <td><input type="text" id="activate_account_button_en" name="activate_account_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Activate Button - Spanish</label></td>
+      <td><input type="text" id="activate_account_button_es" name="activate_account_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Activate Button  - German</label></td>
+      <td><input type="text" id="activate_account_button_de" name="activate_account_button_de" size="30" /></td>
+    </tr>   
+    <tr>
+      <td><label>Decline Invitation Button - English</label></td>
+      <td><input type="text" id="activate_decline_button_en" name="activate_decline_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Decline Invitation Button - Spanish</label></td>
+      <td><input type="text" id="activate_decline_button_es" name="activate_decline_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Decline Invitation Button  - German</label></td>
+      <td><input type="text" id="activate_decline_button_de" name="activate_decline_button_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Title Heading - English</label></td>
+      <td><input type="text" id="addresses_title_en" name="addresses_title_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Title Heading - Spanish</label></td>
+      <td><input type="text" id="addresses_title_es" name="addresses_title_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Title Heading - German</label></td>
+      <td><input type="text" id="addresses_title_de" name="addresses_title_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Add New - English</label></td>
+      <td><input type="text" id="addresses_add_new_en" name="addresses_add_new_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Add New - Spanish</label></td>
+      <td><input type="text" id="addresses_add_new_es" name="addresses_add_new_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Add New - German</label></td>
+      <td><input type="text" id="addresses_add_new_de" name="addresses_add_new_de" size="30" /></td>
+    </tr>
+  <tr>
+      <td><label>Addresses Company - English</label></td>
+      <td><input type="text" id="addresses_company_en" name="addresses_company_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Company - Spanish</label></td>
+      <td><input type="text" id="addresses_company_es" name="addresses_company_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Company - German</label></td>
+      <td><input type="text" id="addresses_company_de" name="addresses_company_de" size="30" /></td>
+    </tr>  
+    <tr>
+      <td><label>Addresses Line One - English</label></td>
+      <td><input type="text" id="addresses_address1_en" name="addresses_address1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Line One - Spanish</label></td>
+      <td><input type="text" id="addresses_address1_es" name="addresses_address1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Line One - German</label></td>
+      <td><input type="text" id="addresses_address1_de" name="addresses_address1_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Line Two - English</label></td>
+      <td><input type="text" id="addresses_address2_en" name="addresses_address2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Line Two - Spanish</label></td>
+      <td><input type="text" id="addresses_address2_es" name="addresses_address2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Line Two - German</label></td>
+      <td><input type="text" id="addresses_address2_de" name="addresses_address2_de" size="30" /></td>
+    </tr>  
+    <tr>
+      <td><label>Addresses City - English</label></td>
+      <td><input type="text" id="addresses_city_en" name="addresses_city_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses City - Spanish</label></td>
+      <td><input type="text" id="addresses_city_es" name="addresses_city_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses City - German</label></td>
+      <td><input type="text" id="addresses_city_de" name="addresses_city_de" size="30" /></td>
+    </tr>  
+  <tr>
+      <td><label>Addresses Country - English</label></td>
+      <td><input type="text" id="addresses_country_en" name="addresses_country_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Country - Spanish</label></td>
+      <td><input type="text" id="addresses_country_es" name="addresses_country_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Country - German</label></td>
+      <td><input type="text" id="addresses_country_de" name="addresses_country_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Province - English</label></td>
+      <td><input type="text" id="addresses_province_en" name="addresses_province_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Province - Spanish</label></td>
+      <td><input type="text" id="addresses_province_es" name="addresses_province_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Province - German</label></td>
+      <td><input type="text" id="addresses_province_de" name="addresses_province_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Zip - English</label></td>
+      <td><input type="text" id="addressses_zip_en" name="addressses_zip_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Zip - Spanish</label></td>
+      <td><input type="text" id="addressses_zip_es" name="addressses_zip_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Zip - German</label></td>
+      <td><input type="text" id="addressses_zip_de" name="addressses_zip_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Phone - English</label></td>
+      <td><input type="text" id="addresses_phone_en" name="addresses_phone_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Phone - Spanish</label></td>
+      <td><input type="text" id="addresses_phone_es" name="addresses_phone_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Phone - German</label></td>
+      <td><input type="text" id="addresses_phone_de" name="addresses_phone_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Set Default Address Msg - English</label></td>
+      <td><input type="text" id="addresses_set_default_msg_en" name="addresses_set_default_msg_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Set Default Address Msg - Spanish</label></td>
+      <td><input type="text" id="addresses_set_default_msg_es" name="addresses_set_default_msg_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Set Default Address Msg - German</label></td>
+      <td><input type="text" id="addresses_set_default_msg_de" name="addresses_set_default_msg_de" size="30" /></td>
+    </tr>
+        <tr>
+      <td><label>Addresses Submit Button - English</label></td>
+      <td><input type="text" id="addresses_submit_en" name="addresses_submit_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Submit Button - Spanish</label></td>
+      <td><input type="text" id="addresses_submit_es" name="addresses_submit_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Submit Button - German</label></td>
+      <td><input type="text" id="addresses_submit_de" name="addresses_submit_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Default - English</label></td>
+      <td><input type="text" id="addresses_default_set_en" name="addresses_default_set_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Default - Spanish</label></td>
+      <td><input type="text" id="addresses_default_set_es" name="addresses_default_set_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Default - German</label></td>
+      <td><input type="text" id="addresses_default_set_de" name="addresses_default_set_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Edit Button - English</label></td>
+      <td><input type="text" id="addresses_edit_button_en" name="addresses_edit_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Edit Button - Spanish</label></td>
+      <td><input type="text" id="addresses_edit_button_es" name="addresses_edit_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Edit Button - German</label></td>
+      <td><input type="text" id="addresses_edit_button_de" name="addresses_edit_button_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Delete Button - English</label></td>
+      <td><input type="text" id="addresses_delete_button_en" name="addresses_delete_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Delete Button - Spanish</label></td>
+      <td><input type="text" id="addresses_delete_button_es" name="addresses_delete_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Delete Button - German</label></td>
+      <td><input type="text" id="addresses_delete_button_de" name="addresses_delete_button_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Update Button - English</label></td>
+      <td><input type="text" id="addresses_update_en" name="addresses_update_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Update Button - Spanish</label></td>
+      <td><input type="text" id="addresses_update_es" name="addresses_update_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Addresses Update Button - German</label></td>
+      <td><input type="text" id="addresses_update_de" name="addresses_update_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Gift Card Translations</legend>
+  <table>
+  <tr>
+      <td><label>Title part 1 - English</label></td>
+      <td><input type="text" id="giftcard_title_part1_en" name="giftcard_title_part1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Title part 1 - Spanish</label></td>
+      <td><input type="text" id="giftcard_title_part1_es" name="giftcard_title_part1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Title part 1 - German</label></td>
+      <td><input type="text" id="giftcard_title_part1_de" name="giftcard_title_part1_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Title Part 2 - English</label></td>
+      <td><input type="text" id="giftcard_title_part2_en" name="giftcard_title_part2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Title Part 2 - Spanish</label></td>
+      <td><input type="text" id="giftcard_title_part2_es" name="giftcard_title_part2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Title Part 2 - German</label></td>
+      <td><input type="text" id="giftcard_title_part2_de" name="giftcard_title_part2_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Gift Card Header - English</label></td>
+      <td><input type="text" id="giftcard_h2_en" name="giftcard_h2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Gift Card Header - Spanish</label></td>
+      <td><input type="text" id="giftcard_h2_es" name="giftcard_h2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Gift Card Header - German</label></td>
+      <td><input type="text" id="giftcard_h2_de" name="giftcard_h2_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Disabled - English</label></td>
+      <td><input type="text" id="giftcard_disabled_en" name="giftcard_disabled_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Disabled - Spanish</label></td>
+      <td><input type="text" id="giftcard_disabled_es" name="giftcard_disabled_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Disabled - German</label></td>
+      <td><input type="text" id="giftcard_disabled_de" name="giftcard_disabled_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Expired - English</label></td>
+      <td><input type="text" id="giftcard_expirated_en" name="giftcard_expirated_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Expired - Spanish</label></td>
+      <td><input type="text" id="giftcard_expirated_es" name="giftcard_expirated_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Expired - German</label></td>
+      <td><input type="text" id="giftcard_expirated_de" name="giftcard_expirated_de" size="30" /></td>
+    </tr>   
+    <tr>
+      <td><label>Expires - English</label></td>
+      <td><input type="text" id="giftcard_expires_en" name="giftcard_expires_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Expires - Spanish</label></td>
+      <td><input type="text" id="giftcard_expires_es" name="giftcard_expires_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Expires - German</label></td>
+      <td><input type="text" id="giftcard_expires_de" name="giftcard_expires_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Balance Left - English</label></td>
+      <td><input type="text" id="giftcard_balance_left_en" name="giftcard_balance_left_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Balance Left - Spanish</label></td>
+      <td><input type="text" id="giftcard_balance_left_es" name="giftcard_balance_left_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Balance Left - German</label></td>
+      <td><input type="text" id="giftcard_balance_left_de" name="giftcard_balance_left_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Instructions - English</label></td>
+      <td><input type="text" id="giftcard_instructions_en" name="giftcard_instructions_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Instructions - Spanish</label></td>
+      <td><input type="text" id="giftcard_instructions_es" name="giftcard_instructions_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Instructions - German</label></td>
+      <td><input type="text" id="giftcard_instructions_de" name="giftcard_instructions_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Action Start Shopping - English</label></td>
+      <td><input type="text" id="giftcard_action_start_shopping_en" name="giftcard_action_start_shopping_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Action Start Shopping - Spanish</label></td>
+      <td><input type="text" id="giftcard_action_start_shopping_es" name="giftcard_action_start_shopping_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Action Start Shopping - German</label></td>
+      <td><input type="text" id="giftcard_action_start_shopping_de" name="giftcard_action_start_shopping_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Action Print - English</label></td>
+      <td><input type="text" id="giftcard_action_print_en" name="giftcard_action_print_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Action Print - Spanish</label></td>
+      <td><input type="text" id="giftcard_action_print_es" name="giftcard_action_print_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Action Print - German</label></td>
+      <td><input type="text" id="giftcard_action_print_de" name="giftcard_action_print_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>FAQ Translations</legend>
+  <table>
+    <tr>
+      <td><label>Read More - English</label></td>
+      <td><input type="text" id="faq_read_more_en" name="faq_read_more_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Read More - Spanish</label></td>
+      <td><input type="text" id="faq_read_more_es" name="faq_read_more_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Read More- German</label></td>
+      <td><input type="text" id="faq_read_more_de" name="faq_read_more_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>About Translations</legend>
+  <table>
+    <tr>
+      <td><label>Page Title - English</label></td>
+      <td><input type="text" id="about_page_title_en" name="about_page_title_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Page Title - Spanish</label></td>
+      <td><input type="text" id="about_page_title_es" name="about_page_title_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Page Title- German</label></td>
+      <td><input type="text" id="about_page_title_de" name="about_page_title_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Community Translations</legend>
+  <table>
+    <tr>
+      <td><label>Read Story Part 1 - English</label></td>
+      <td><input type="text" id="read_spotlight_story_part1_en" name="read_spotlight_story_part1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Read Story Part 1 - Spanish</label></td>
+      <td><input type="text" id="read_spotlight_story_part1_es" name="read_spotlight_story_part1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Read Story Part 1- German</label></td>
+      <td><input type="text" id="read_spotlight_story_part1_de" name="read_spotlight_story_part1_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Read Story Part 2 - English</label></td>
+      <td><input type="text" id="read_spotlight_story_part2_en" name="read_spotlight_story_part2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Read Story Part 2 - Spanish</label></td>
+      <td><input type="text" id="read_spotlight_story_part2_es" name="read_spotlight_story_part2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Read Story Part 2- German</label></td>
+      <td><input type="text" id="read_spotlight_story_part2_de" name="read_spotlight_story_part2_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Follow on Instagram - English</label></td>
+      <td><input type="text" id="follow_instagram_en" name="follow_instagram_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Follow on Instagram - Spanish</label></td>
+      <td><input type="text" id="follow_instagram_es" name="follow_instagram_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Follow on Instagram- German</label></td>
+      <td><input type="text" id="follow_instagram_de" name="follow_instagram_de" size="30" /></td>
+    </tr>
+     <tr>
+      <td><label>Visit Pinterest - English</label></td>
+      <td><input type="text" id="visit_pinterest_en" name="visit_pinterest_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Visit Pinterest - Spanish</label></td>
+      <td><input type="text" id="visit_pinterest_es" name="visit_pinterest_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Visit Pinterest- German</label></td>
+      <td><input type="text" id="visit_pinterest_de" name="visit_pinterest_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Tweets By Unyq - English</label></td>
+      <td><input type="text" id="tweets_by_unyq_en" name="tweets_by_unyq_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Tweets By Unyq - Spanish</label></td>
+      <td><input type="text" id="tweets_by_unyq_es" name="tweets_by_unyq_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Tweets By Unyq- German</label></td>
+      <td><input type="text" id="tweets_by_unyq_de" name="tweets_by_unyq_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+
+<fieldset>
+  <legend>Contact Translations</legend>
+  <table>
+    <tr>
+      <td><label>Post Success Msg - English</label></td>
+      <td><input type="text" id="post_success_msg_en" name="post_success_msg_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Post Success Msg - Spanish</label></td>
+      <td><input type="text" id="post_success_msg_es" name="post_success_msg_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Post Success Msg - German</label></td>
+      <td><input type="text" id="post_success_msg_de" name="post_success_msg_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Post Error Msg Part 1 - English</label></td>
+      <td><input type="text" id="post_error_msg_part1_en" name="post_error_msg_part1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Post Error Msg Part 1 - Spanish</label></td>
+      <td><input type="text" id="post_error_msg_part1_es" name="post_error_msg_part1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Post Error Msg Part 1- German</label></td>
+      <td><input type="text" id="post_error_msg_part1_de" name="post_error_msg_part1_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Post Error Msg Part 2 - English</label></td>
+      <td><input type="text" id="post_error_msg_part2_en" name="post_error_msg_part2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Post Error Msg Part 2 - Spanish</label></td>
+      <td><input type="text" id="post_error_msg_part2_es" name="post_error_msg_part2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Post Error Msg Part 2 - German</label></td>
+      <td><input type="text" id="post_error_msg_part2_de" name="post_error_msg_part2_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Contact Full Name - English</label></td>
+      <td><input type="text" id="contact_fullname_en" name="contact_fullname_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Contact Full Name - Spanish</label></td>
+      <td><input type="text" id="contact_fullname_es" name="contact_fullname_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Contact Full Name- German</label></td>
+      <td><input type="text" id="contact_fullname_de" name="contact_fullname_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Subject - English</label></td>
+      <td><input type="text" id="email_subject_en" name="email_subject_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Subject - Spanish</label></td>
+      <td><input type="text" id="email_subject_es" name="email_subject_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Subject - German</label></td>
+      <td><input type="text" id="email_subject_de" name="email_subject_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Message - English</label></td>
+      <td><input type="text" id="email_message_en" name="email_message_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Message - Spanish</label></td>
+      <td><input type="text" id="email_message_es" name="email_message_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Message - German</label></td>
+      <td><input type="text" id="email_message_de" name="email_message_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Name Placeholder - English</label></td>
+      <td><input type="text" id="name_placeholder_en" name="name_placeholder_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Name Placeholder - Spanish</label></td>
+      <td><input type="text" id="name_placeholder_es" name="name_placeholder_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Name Placeholder - German</label></td>
+      <td><input type="text" id="name_placeholder_de" name="name_placeholder_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Placeholder - English</label></td>
+      <td><input type="text" id="email_placeholder_en" name="email_placeholder_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Placeholder - Spanish</label></td>
+      <td><input type="text" id="email_placeholder_es" name="email_placeholder_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Email Placeholder - German</label></td>
+      <td><input type="text" id="email_placeholder_de" name="email_placeholder_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Subject Placeholder - English</label></td>
+      <td><input type="text" id="subject_placeholder_en" name="subject_placeholder_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Subject Placeholder - Spanish</label></td>
+      <td><input type="text" id="subject_placeholder_es" name="subject_placeholder_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Subject Placeholder - German</label></td>
+      <td><input type="text" id="subject_placeholder_de" name="subject_placeholder_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Message Placeholder - English</label></td>
+      <td><input type="text" id="message_placeholder_en" name="message_placeholder_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Message Placeholder - Spanish</label></td>
+      <td><input type="text" id="message_placeholder_es" name="message_placeholder_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Message Placeholder - German</label></td>
+      <td><input type="text" id="message_placeholder_de" name="message_placeholder_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Look Book Translations</legend>
+  <table>
+    <tr>
+      <td><label>Look Book Header - English</label></td>
+      <td><input type="text" id="lookbook_h1_en" name="lookbook_h1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Look Book Header - Spanish</label></td>
+      <td><input type="text" id="lookbook_h1_es" name="lookbook_h1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Look Book Header - German</label></td>
+      <td><input type="text" id="lookbook_h1_de" name="lookbook_h1_de" size="30" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Press Translations</legend>
+  <table>
+    <tr>
+      <td><label>Press Header - English</label></td>
+      <td><input type="text" id="press_h1_en" name="press_h1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Press Header - Spanish</label></td>
+      <td><input type="text" id="press_h1_es" name="press_h1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Press Header - German</label></td>
+      <td><input type="text" id="press_h1_de" name="press_h1_de" size="30" /></td>
+    </tr> 
+    <tr>
+      <td><label>Recents Header - English</label></td>
+      <td><input type="text" id="recents_h1_en" name="recents_h1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Recents Header - Spanish</label></td>
+      <td><input type="text" id="recents_h1_es" name="recents_h1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Recents Header - German</label></td>
+      <td><input type="text" id="recents_h1_de" name="recents_h1_de" size="30" /></td>
+    </tr>  
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Hub Translations</legend>
+  <table>
+    <tr>
+      <td><label>Become a hub button - English</label></td>
+      <td><input type="text" id="become_hub_button_en" name="become_hub_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Become a hub button - Spanish</label></td>
+      <td><input type="text" id="become_hub_button_es" name="become_hub_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Become a hub button - German</label></td>
+      <td><input type="text" id="become_hub_button_de" name="become_hub_button_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Map Starting Latitude - English</label></td>
+      <td><input type="text" id="map_latitude_en" name="map_latitude_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Map Starting Longitude - English</label></td>
+      <td><input type="text" id="map_longitude_en" name="map_longitude_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Map Starting Latitude - Spanish</label></td>
+      <td><input type="text" id="map_latitude_es" name="map_latitude_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Map Starting Longitude - Spanish</label></td>
+      <td><input type="text" id="map_longitude_es" name="map_longitude_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Map Starting Latitude - German</label></td>
+      <td><input type="text" id="map_latitude_de" name="map_latitude_de" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Map Starting Longitude - German</label></td>
+      <td><input type="text" id="map_longitude_de" name="map_longitude_de" size="30" /></td>
+    </tr>
+    <tr>
+      <th><label>Hub Sign up Page - English</label></th>
+      <td><input class="text" name="hub_sign_up_page_en" id="hub_sign_up_page_en" /></td>
+    </tr>
+    <tr>
+      <th><label>Hub Sign up Page - Spanish</label></th>
+      <td><input class="text" name="hub_sign_up_page_es" id="hub_sign_up_page_es" /></td>
+    </tr>
+    <tr>
+      <th><label>Hub Sign up Page - German</label></th>
+      <td><input class="page" name="hub_sign_up_page_de" id="hub_sign_up_page_de" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+
+<fieldset>
+  <legend>Product Translations</legend>
+  <table>
+  <tr>
+      <td><label>Product Details Header - English</label></td>
+      <td><input type="text" id="product_details_h4_en" name="product_details_h4_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Details Header - Spanish</label></td>
+      <td><input type="text" id="product_details_h4_es" name="product_details_h4_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Details Header - German</label></td>
+      <td><input type="text" id="product_details_h4_de" name="product_details_h4_de" size="30" /></td>
+    </tr> 
+    <tr>
+      <td><label>Product Back Order Msg - English</label></td>
+      <td><input type="text" id="product_back_ordered_msg_en" name="product_back_ordered_msg_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Back Order Msg - Spanish</label></td>
+      <td><input type="text" id="product_back_ordered_msg_es" name="product_back_ordered_msg_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Back Order Msg - German</label></td>
+      <td><input type="text" id="product_back_ordered_msg_de" name="product_back_ordered_msg_de" size="30" /></td>
+    </tr> 
+    <tr>
+      <td><label>Next Product Button - English</label></td>
+      <td><input type="text" id="next_product_button_en" name="next_product_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Next Product Button - Spanish</label></td>
+      <td><input type="text" id="next_product_button_es" name="next_product_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Next Product Button - German</label></td>
+      <td><input type="text" id="next_product_button_de" name="next_product_button_de" size="30" /></td>
+    </tr> 
+    <tr>
+      <td><label>Prev Product Button - English</label></td>
+      <td><input type="text" id="prev_product_button_en" name="prev_product_button_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Prev Product Button - Spanish</label></td>
+      <td><input type="text" id="prev_product_button_es" name="prev_product_button_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Prev Product Button - German</label></td>
+      <td><input type="text" id="prev_product_button_de" name="prev_product_button_de" size="30" /></td>
+    </tr> 
+    <tr>
+      <td><label>Size Guide Header - English</label></td>
+      <td><input type="text" id="size_guide_en" name="size_guide_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Size Guide Header - Spanish</label></td>
+      <td><input type="text" id="size_guide_es" name="size_guide_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Size Guide Header - German</label></td>
+      <td><input type="text" id="size_guide_de" name="size_guide_de" size="30" /></td>
+    </tr> 
+    <tr>
+      <td><label>Product Selling Points 1 - English</label></td>
+      <td><input type="text" id="product_selling_points_1_en" name="product_selling_points_1_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Selling Points 1 - Spanish</label></td>
+      <td><input type="text" id="product_selling_points_1_es" name="product_selling_points_1_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Selling Points 1 - German</label></td>
+      <td><input type="text" id="product_selling_points_1_de" name="product_selling_points_1_de" size="30" /></td>
+    </tr>
+      <tr>
+      <td><label>Product Selling Points 2 - English</label></td>
+      <td><input type="text" id="product_selling_points_2_en" name="product_selling_points_2_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Selling Points 2 - Spanish</label></td>
+      <td><input type="text" id="product_selling_points_2_es" name="product_selling_points_2_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Selling Points 2 - German</label></td>
+      <td><input type="text" id="product_selling_points_2_de" name="product_selling_points_2_de" size="30" /></td>
+    </tr>
+      <tr>
+      <td><label>Product Selling Points 3 - English</label></td>
+      <td><input type="text" id="product_selling_points_3_en" name="product_selling_points_3_en" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Selling Points 3 - Spanish</label></td>
+      <td><input type="text" id="product_selling_points_3_es" name="product_selling_points_3_es" size="30" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Selling Points 3 - German</label></td>
+      <td><input type="text" id="product_selling_points_3_de" name="product_selling_points_3_de" size="30" /></td>
+    </tr>
+      <tr>
+      <td><label>Product Deposit - English</label></td>
+      <td><input type="text" id="product_deposit_msg_en" name="product_deposit_msg_en" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Deposit - Spanish</label></td>
+      <td><input type="text" id="product_deposit_msg_es" name="product_deposit_msg_es" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>Product Deposit - German</label></td>
+      <td><input type="text" id="product_deposit_msg_de" name="product_deposit_msg_de" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>Add Accessories Msg - English</label></td>
+      <td><input type="text" id="add_accessories_msg_en" name="add_accessories_msg_en" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>Add Accessories Msg - Spanish</label></td>
+      <td><input type="text" id="add_accessories_msg_es" name="add_accessories_msg_es" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>Add Accessories Msg - German</label></td>
+      <td><input type="text" id="add_accessories_msg_de" name="add_accessories_msg_de" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>Your (product title)... - English</label></td>
+      <td><input type="text" id="your_en" name="your_en" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>Your (product title)... - Spanish</label></td>
+      <td><input type="text" id="your_es" name="your_es" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>Your (product title)... - German</label></td>
+      <td><input type="text" id="your_de" name="your_de" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>...product Description Msg - English</label></td>
+      <td><input type="text" id="product_description_msg_en" name="product_description_msg_en" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>...product Description Msg - Spanish</label></td>
+      <td><input type="text" id="product_description_msg_es" name="product_description_msg_es" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>...product Description Msg - German</label></td>
+      <td><input type="text" id="product_description_msg_de" name="product_description_msg_de" size="40" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>Search options</legend>
+  <table>
+    <tr>
+      <td><label>Search For - English</label></td>
+      <td><input type="text" id="search_for_terms_en" name="search_for_terms_en" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>Search For - Spanish</label></td>
+      <td><input type="text" id="search_for_terms_es" name="search_for_terms_es" size="40" /></td>
+    </tr>
+    <tr>
+      <td><label>Search For - German</label></td>
+      <td><input type="text" id="search_for_terms_de" name="search_for_terms_de" size="40" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+
+<fieldset>
+  <legend>Money options</legend>
+  <table>
+    <tr>
+      <td><label for="show_multiple_currencies">Show currency selector?</label></td>
+      <td><input type="checkbox" id="show_multiple_currencies" name="show_multiple_currencies" checked="checked" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><small>Although you will be able to display prices on your store front in different currencies, Shopify will still process orders in your shop's currency.</small></td>
+    </tr>
+    <tr>
+      <td><label for="currency_format">Money format</label></td>
+      <td>
+        <select name="currency_format" id="currency_format">
+          <option value="money_format">
+            Without Currency, ex: $10.00
+          </option>
+          <option value="money_with_currency_format" selected="selected">
+            With Currency, ex: $10 CAD
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="supported_currencies">Currencies you wish to support</label></td>
+      <td><input type="text" class="text long" name="supported_currencies" id="supported_currencies" value="CAD USD" /></td>
+    </tr>
+    <tr>
+      <td><label for="default_currency">Default currency</label></td>
+      <td><input type="text" class="text" name="default_currency" id="default_currency" value="CAD" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><small>Separate your currency codes with a space. Use the ISO 4217 3-letter currency code. Click <a target="_blank" href="http://www.xe.com/iso4217.php">here</a> for a complete list of currency codes. Example: <i>CAD USD</i>.</small></td>
+    </tr>
+    <tr>
+      <td colspan="2"><small>* For this functionality to work in your shop, you are required to edit your money formats as per <a href="http://wiki.shopify.com/Do_Tell_Where_The_Money_Is" target="_blank">these instructions</a> (“Do tell where the money is”).</small></td>
+    </tr>
+  </table>
+</fieldset>

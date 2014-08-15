@@ -1,0 +1,9 @@
+<h1 class="page-title">{{ page.title }}</h1>
+
+<div id="content" class="{{page.handle}}">
+	<div class="{% if page.handle == 'policies'%}thin {% endif %}c cf">
+		<div class="rte">
+		  {{ page.content }}
+		</div>
+	</div>
+</div>

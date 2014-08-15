@@ -1,0 +1,276 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign product_details_h4 = settings.product_details_h4_en %}
+    {% assign product_back_ordered_msg = settings.product_back_ordered_msg_en %}
+    {% assign next_product_button = settings.next_product_button_en %}
+    {% assign prev_product_button = settings.prev_product_button_en %}
+    {% assign size_guide = settings.size_guide_en %}
+
+{% elsif settings.language == "es" %}
+
+    {% assign product_details_h4 = settings.product_details_h4_es %}
+    {% assign product_back_ordered_msg = settings.product_back_ordered_msg_es %}
+    {% assign next_product_button = settings.next_product_button_es %}
+    {% assign prev_product_button = settings.prev_product_button_es %}
+    {% assign size_guide = settings.size_guide_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign product_details_h4 = settings.product_details_h4_de %}
+    {% assign product_back_ordered_msg = settings.product_back_ordered_msg_de %}
+    {% assign next_product_button = settings.next_product_button_de %}
+    {% assign prev_product_button = settings.prev_product_button_de %}
+    {% assign size_guide = settings.size_guide_de %}
+
+{% endif %}
+
+
+
+<div id="product" class="c cf">
+
+ 
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+  <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
+  
+  <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart" class="fifty r">
+    
+    <div id="product-details" >
+      
+      <h1 itemprop="name">{{ product.title }}</h1>
+      {% if product.compare_at_price > product.price %}
+      <span class="product-price on-sale" itemprop="price">{{ product.price | money }}</span>&nbsp;<s class="product-compare-price">{{ product.compare_at_price_max | money }}</s>
+      {% else %}
+      <span class="product-price" itemprop="price">{{ product.price | money }}</span>
+      {% endif %}
+      
+      
+      {% assign hide_default_title = false %}
+      {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+        {% assign hide_default_title = true %}
+      {% endif %}       
+
+      <div class="product-options">
+          
+        
+          <div id="radios" class="clearfix"{% if hide_default_title %} style="display:none"{% endif %}>
+            {% if product.variants.size > 1 %}
+            	{% if product.options[0] %}
+            	<div class="option">
+                    {% assign used = '' %}
+                    <h4>{{ product.options[0] }}</h4>
+                    {% for variant in product.variants %}
+                    	{% unless used contains variant.option1 %}
+	                    {% assign var1 = variant.option1 | handleize %}
+                  			<input data-option="{{product.options[0]}}" data-name="{{variant.option1}}" type="radio" id="{{variant.option1 | handleize}}" name="radio1" value="{{ variant.id }}" {% if forloop.first %}class="first"{% endif %}  /> 
+            				<label for="{{variant.option1 | handleize}}"><span></span>{{ variant.option1 }}</label>
+                  			{% capture used %}{{ used }} {{ variant.option1 }}{% endcapture %}
+                  		{% endunless %}
+                  	{% endfor %}
+            	</div>
+                {% endif %}
+            
+            	{% if product.options[1] %}
+            	<div class="option">
+                    {% assign used = '' %}
+                    <h4>{{ product.options[1] }}</h4>
+                    {% for variant in product.variants %}
+                    	{% unless used contains variant.option2 %}
+                  		{% assign var2 = variant.option2 | handleize %}
+			                <input data-option="{{product.options[1]}}" data-name="{{variant.option2}}" type="radio" id="{{variant.option2 | handleize}}" name="radio2" value="{{ variant.id }}" {% if forloop.first %}class="first"{% endif %} /> 
+            				<label for="{{variant.option2 | handleize}}"><span></span>{{ variant.option2 }}</label>
+                  			{% capture used %}{{ used }} {{ variant.option2 }}{% endcapture %}
+                  		{% endunless %}
+                  	{% endfor %}
+            	</div>
+                {% endif %}
+            
+            	{% if product.options[2] %}
+            	<div class="option">
+                    {% assign used = '' %}
+                    <h4>{{ product.options[2] }}</h4>
+                    {% for variant in product.variants %}
+                    	{% unless used contains variant.option3 %}
+                  			{% assign var3 = variant.option3 | handleize %}
+                  			<input data-option="{{product.options[2]}}" data-name="{{variant.option3}}" type="radio" id="{{variant.option3 | handleize}}" name="radio3" value="{{ variant.id }}" {% if forloop.first %}class="first"{% endif %} {% comment %}{% if forloop.first %}checked="checked"{% endif %}{% endcomment %}/> 
+            				<label for="{{variant.option3 | handleize}}"><span></span>{{ variant.option3 }}</label>
+                  			{% capture used %}{{ used }} {{ variant.option1 }}{% endcapture %}
+                  		{% endunless %}
+                  	{% endfor %}
+	            </div>
+                {% endif %}
+            
+               {% endif %}
+               <input type="hidden" name="id" id="product-select" value="{{product.variants.first.id}}" />
+               <h4>Quantity</h4><input class="quantity" type="number" value="1" name="quantity" />
+            
+          </div>
+     
+            
+      <div id="product-description" class="rte" itemprop="description">
+        <h4>{{product_details_h4}}</h4>
+        {{ product.description }}
+      </div>
+      
+      {% comment %}
+      All themes by Shopify should support the Grapevine Reviews app out of the box.
+      https://apps.shopify.com/grapevine-reviews
+      {% endcomment %} 
+      <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+      
+            
+         
+             
+      <div id="backorder" class="hidden">
+        <p><span id="selected-variant"></span> {{product_back_ordered_msg}}</p>
+      </div>
+        
+      <div id="product-add">
+        <input type="submit" class="btn" name="add" id="add" value="Add to Bag">
+        <span class="error"></span>
+      </div>
+      {% comment %}
+      {% if collection %}
+        {% if collection.previous_product or collection.next_product %}
+        <div>     
+        {% if collection.previous_product %}
+          {% capture prev_url %}{{ collection.previous_product}}#content{% endcapture %}
+          <span class="left"><a href="{{prev_url}}">&larr;{{prev_product_button}}</a></span>
+        {% endif %}
+        {% if collection.next_product %}
+          {% capture next_url %}{{ collection.next_product}}#content{% endcapture %}
+          <span class="right"><a href="{{next_url}}">{{next_product_button}}&rarr;</a></span>
+        {% endif %}
+        </div>
+        {% endif %}
+      {% endif %}
+      {% endcomment %}
+    </div><!-- #product-details -->
+
+
+  </form>
+</div>
+  
+  <div id="product-photos" class="l fifty">
+  
+  
+
+ 	<div id="main-image" {% if settings.enable_product_image_zoom %}class="cloud-zoom"{% endif %}>
+        <a href="{{ product.featured_image.src | product_img_url: 'original' }}" title="{{ product.title }}"><img src="{{ product.featured_image | product_img_url: 'original' }}" alt="{{ img.alt | escape }}" /></a>
+    </div>
+
+
+    {% if product.images.size > 1 %}
+    <ul id="product-photo-thumbs" class="grid">
+      {% for image in product.images %}
+      <li class="product-photo-thumb">
+        <a href="{{ image | product_img_url: 'original' }}" data-original-image="{{ image | product_img_url: 'original' }}" class="thumb-img">
+            <img src="{{ image | product_img_url: 'medium' }}" alt="{{ image.alt | escape }}" />
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+
+  </div><!-- #product-photos -->
+ 
+
+</div>
+
+<div style="display: none;">
+	<div id="size-popup">
+		{{ pages.size-guide.content}}
+      <h2>{{size_guide}}</h2>
+	</div>
+</div>
+
+{% comment %}
+Adding support for product options. See here for details: http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options
+{% endcomment %}
+
+<script>
+
+$(function() {
+	
+	$('.option .first').trigger('click');
+	var id="";
+    var price="";
+    var available=false;
+    var quantity=0;
+    var imgalt = "";
+    var optname = "";
+    $("input[type='radio']").change(function() {
+      {% if product.options[0] %}
+      	var opt1 = $('input:radio[name=radio1]:checked').attr('data-name');
+      	var on1 = $('input:radio[name=radio1]:checked').attr('data-option');
+        imgalt = opt1;
+        optname = on1;
+        
+      {% endif %}
+      {% if product.options[1] %}
+      	var opt2 = $('input:radio[name=radio2]:checked').attr('data-name');
+      	var on2 = $('input:radio[name=radio2]:checked').attr('data-option');
+        imgalt = imgalt + ' ' + opt2;
+        optname = optname + ' & ' + on2;
+      {% endif %}
+        
+      {% if product.options[2] %}
+      	var opt3 = $('input:radio[name=radio3]:checked').attr('data-name');
+      	var on3 = $('input:radio[name=radio3]:checked').attr('data-option');
+        imgalt = imgalt + ' ' + opt3;
+        optname = optname + ' & ' + on3;
+      {% endif %}
+	  
+	  {% for v in product.variants %}
+      	if(opt1=="{{ v.option1 }}"{% if product.options[1] %} && opt2=="{{ v.option2 }}"{% endif %}{% if product.options[2] %} && opt3=="{{ v.option3 }}"{% endif %}) {
+			id = '{{ v.id }}';
+			price = "{{ v.price | money }}";
+			available = {{v.available}};
+			quantity = {{v.inventory_quantity}};	
+		}
+      {% endfor %}
+      CheckIt(id);
+    });
+    function CheckIt(variant) {
+	  console.log('Available? ' + available + ' with ' + quantity + ' left');
+      if(id!="") {
+      	if(available) {
+      		$('#add').removeAttr('disabled');
+	      	$('#product-select').val(id);
+	        $('.product-price').html(price);
+	        $('.selected-variant').text(id);
+	        $('.error').hide();
+	        $('.thumbs img[alt="'+imgalt+'"]').parent().trigger('click');
+	        var newimg = $('.thumbs img[alt="'+imgalt+'"]').parent().attr('href');
+      	} else {
+	     	$('#add').attr('disabled','disabled');
+	     	$('.error').html('This ' + optname + ' is out of stock').show();
+	     	
+      	}
+        
+      } else {
+        $('#product-select').val('');
+        $('#price-preview span').html('Unavailable');
+      }
+    }
+
+	$(".thumb-img").bind("mouseover",function(){
+		$(".cloud-zoom img").attr("src",$(this).attr("href"));
+        return false;
+    });
+	$(".thumb-img").bind("click",function(){
+		$(".cloud-zoom img").attr("src",$(this).attr("href"));
+        return false;
+    });
+	$('.cloud-zoom').zoom();
+	$('.size-guide-link').click(function(e) {
+		e.preventDefault();
+		$("#size-popup").modal({
+			overlayClose:true
+		});
+	});
+});
+  
+</script>

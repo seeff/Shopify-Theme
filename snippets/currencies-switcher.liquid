@@ -1,0 +1,12 @@
+<div id="currencies">
+{% capture codes %},USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK,{% endcapture %}
+{% assign supported_codes = settings.supported_currencies | split: ' ' %}
+  <div id="current-currency" class="en">{{shop.currency}}</div>
+  <ul id="currency-list">
+  {% for code in supported_codes %}
+  {% if codes contains code %}
+    <li class="{{code}} data-value="{{ code }}"><a data-currency="{{code}}" href="#">{{ code }}</a></li>
+  {% endif %}
+  {% endfor %}
+  </ul>
+</div>

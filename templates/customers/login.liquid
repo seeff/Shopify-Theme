@@ -1,0 +1,194 @@
+
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+  {% assign customers_firstname = settings.firstname_label_en %}
+  {% assign customers_lastname = settings.lastname_label_en %}
+  {% assign login_h2 = settings.login_h2_en %}
+  {% assign login_password_label = settings.password_label_en %}
+  {% assign login_checkout_guest = settings.login_checkout_guest_en %}
+  {% assign login_no_account_yet = settings.login_no_account_yet_en %}
+  {% assign login_as_guest = settings.login_as_guest_en %}
+  {% assign login_email_label = settings.email_label_en %}
+  {% assign login_forgot_password = settings.login_forgot_password_en %}
+  {% assign login_reset_password = settings.login_reset_password_en %}
+  {% assign login_reset_password_note = settings.login_reset_password_note_en %}
+  {% assign login_cancel_button = settings.cancel_button_en %}
+  {% assign login_create_button = settings.create_button_en %}
+  {% assign login_create_account_h2 = settings.create_account_h2_en %}
+  {% assign sign_in_button = settings.sign_in_button_en %}
+  {% assign submit_button = settings.submit_button_en %}
+
+{% elsif settings.language == "es" %}
+
+  {% assign customers_firstname = settings.firstname_label_es %}
+  {% assign customers_lastname = settings.lastname_label_es %}
+  {% assign login_h2 = settings.login_h2_es %}
+  {% assign login_checkout_guest = settings.login_checkout_guest_es %}
+  {% assign login_no_account_yet = settings.login_no_account_yet_es %}
+  {% assign login_as_guest = settings.login_as_guest_es %}
+  {% assign login_email_label = settings.email_label_es %}
+  {% assign login_forgot_password = settings.login_forgot_password_es %}
+  {% assign login_reset_password = settings.login_reset_password_es %}
+  {% assign login_reset_password_note = settings.login_reset_password_note_es %}
+  {% assign login_cancel_button = settings.cancel_button_es %}
+  {% assign login_create_button = settings.create_button_es %}
+  {% assign login_create_account_h2 = settings.create_account_h2_es %}
+  {% assign sign_in_button = settings.sign_in_button_es %}
+  {% assign submit_button = settings.submit_button_es %}
+
+{% elsif settings.language == "de" %}
+
+  {% assign customers_firstname = settings.firstname_label_de %}
+  {% assign customers_lastname = settings.lastname_label_de %}
+  {% assign login_h2 = settings.login_h2_de %}
+  {% assign login_checkout_guest = settings.login_checkout_guest_de %}
+  {% assign login_no_account_yet = settings.login_no_account_yet_de %}
+  {% assign login_as_guest = settings.login_as_guest_de %}
+  {% assign login_email_label = settings.email_label_de %}
+  {% assign login_forgot_password = settings.login_forgot_password_de %}
+  {% assign login_reset_password = settings.login_reset_password_de %}
+  {% assign login_reset_password_note = settings.login_reset_password_note_de %}
+  {% assign login_cancel_button = settings.cancel_button_de %}
+  {% assign login_create_button = settings.create_button_de %}
+  {% assign login_create_account_h2 = settings.create_account_h2_de %}
+  {% assign sign_in_button = settings.sign_in_button_de %}
+  {% assign submit_button = settings.submit_button_de %}
+
+{% endif %}
+
+
+<div id="content" class="c cf">
+{% layout settings.customer_layout %}
+	<div id="customer-wrapper" class="cf">
+
+		<div id="customer-background">
+			<div id="template" class="">
+
+  				{% comment %}
+    			Guest Login form for shops with optional customer accounts. This form is displayed only when users click on the checkout link
+    			on the cart page.
+  				{% endcomment %}
+
+  				{% if shop.checkout.guest_login %}
+  				<div id="guest" class="desktop-12 mobile-3">
+    				<div class="template_header">
+                      <h2>{{login_checkout_guest}}</h2>
+                      <p>{{login_no_account_yet}}</p>
+                      </div>
+    				{% form 'guest_login' %}
+                  <input class="secondary btn" type="submit" value="{{login_as_guest}}" />
+    				{% endform %}
+  				</div>
+  				{% endif %}
+
+				<div class="cf"></div>
+
+  				<div id="customer" class="fifty l">
+    				<div class="template_header">
+                      <h2>{{login_h2}}</h2>
+    				</div>
+    				{% form 'customer_login' %}
+      				{{ form.errors | default_errors }}
+
+      				<div id="login_email" class="clearfix large_form">
+                      <label for="customer_email" class="login">{{login_email_label}}</label>
+        				<input type="email" value="" name="customer[email]" id="customer_email" class="large" size="30" />
+      				</div>
+      				{% if form.password_needed %}
+        			{% comment %}
+          			Customer Account Login
+        			{% endcomment %}
+        			<div id="login_password" class="clearfix large_form">
+                      <label for="customer_password" class="login">{{password_label}}</label>
+          				<input type="password" value="" name="customer[password]" id="customer_password" class="large password" size="16" />
+          				<div id="forgot_password">
+                          <a href="#" onclick="showRecoverPasswordForm();return false;">{{login_forgot_password}}</a>
+          				</div>
+        			</div>
+      				{% endif %}
+      				<div class="action_bottom">
+                      <input class="btn" type="submit" value="{{sign_in_button}}" />
+      				</div>
+    				{% endform %}
+  				</div>
+
+  				{% comment %}
+    			Recover Password Form
+  				{% endcomment %}
+  				<div id="recover-password" style='display:none'>
+    				<div class="template_header">
+                      <h2>{{login_reset_password}}</h2>
+                      <p class="note">{{login_reset_password_note}}</p>
+    				</div>
+    				{% form 'recover_customer_password' %}
+      				{{ form.errors | default_errors }}
+      				<div id="recover_email" class="clearfix large_form">
+        				<label for="email" class="large">{{login_email_label}}</label>
+        				<input type="email" value="" size="30" name="email" id="recover-email" class="large" />
+      				</div>
+      				<div class="action_bottom">
+                      <input class="btn" type="submit" value="{{submit_button}}" />
+                      <span class="note">or <a href="#" onclick="hideRecoverPasswordForm();return false;">{{login_cancel_button}}</a></span>
+      				</div>
+    				{% endform %}
+  				</div>
+  			</div>
+
+			      <!-- Create Customer -->
+				  <div id="create-customer" class="fifty r">
+				    <div class="template_header">
+				      <h2 class="title">{{login_create_account_h2}}</h2>
+				    </div>
+
+				    {% form 'create_customer' %}
+				      {{ form.errors | default_errors }}
+
+
+				      <div id="first_name" class="clearfix large_form">
+                        <label for="first_name" class="login">{{customers_firstname}}</label>
+				        <input type="text" value="" name="customer[first_name]" id="first_name" class="large" size="30" />
+				      </div>
+
+				      <div id="last_name" class="clearfix large_form">
+                        <label for="last_name" class="login">{{customers_lastname}}</label>
+				        <input type="text" value="" name="customer[last_name]" id="last_name" class="large" size="30" />
+				      </div>
+
+				      <div id="email" class="clearfix large_form">
+                        <label for="email" class="login">{{login_email_label}}</label>
+				        <input type="email" value="" name="customer[email]" id="email" class="large" size="30" />
+				      </div>
+
+				      <div id="password" class="clearfix large_form">
+                        <label for="password" class="login">{{login_password_label}}</label>
+				        <input type="password" value="" name="customer[password]" id="password" class="large password" size="30" />
+				      </div>
+
+
+				      <div class="action_bottom">
+                        <input class="btn" type="submit" value="{{login_create_button}}"/>
+				      </div>
+				    {% endform %}
+				  </div><!-- /#create-customer -->
+
+		</div>
+	</div>
+
+<script type="text/javascript">
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'inline-block';
+    document.getElementById('customer').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('customer').style.display = 'inline-block';
+  }
+
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+</script>
+
+
+</div>

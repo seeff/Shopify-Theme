@@ -1,0 +1,37 @@
+<h1 class="page-title">{{collection.title}}</h1>
+<div id="content" class="c cf">
+	<div id="accordion" class="collection-sidebar">
+	<ul>
+		{% for link in linklists.shop.links %}
+		<!-- does this link in our iteration point to the current page? -->
+		{% assign current = false %}{% if template == 'index' and link.url == '/' %}{% assign current = true %}{% elsif collection.url == link.url %}{% assign current = true %}{% elsif blog.url == link.url %}{% assign current = true %}{% elsif page.url == link.url %}{% assign current = true %}{% elsif page_title == link.title %}{% assign current = true %}{% elsif template == 'list-collections' and link.url == '/collections' %}{% assign current = true %}{% elsif page_title == 'Products' and link.url == '/collections/all' %}{% assign current = true %}{% elsif template == 'article' and link.url == article.url %}{% assign current = true %}{% endif %}
+		<!-- end of soul-searching about active class -->
+		
+			<li>
+				<a id="{{link.handle}}" {% if link.active %} class="active"{% endif %} href="{{link.url}}"><span>{{link.title}}</span></a>
+				{% capture child_list_handle %}{{ link.title | handle }}{% endcapture %}
+			    {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+	            {% unless link.handle contains 'featured' %}
+			    <ul>
+			      {% for l in linklists[child_list_handle].links %}
+			      <li><a {% if l.active %} class="active"{% endif %} href="{{ l.url }}">{{ l.title }}</a></li>
+			      {% endfor %}
+			    </ul>
+                {% endunless %}
+			    {% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+      <a href="/products/design-your-own"><img src="{{'design-your-own.png' | asset_url }}" width="100%" /></a>
+	</div>
+	
+	<div class="collection-list">
+		{% for link in linklists.featured.links %}
+			<div class="featured-collection">
+				<a href="{{link.url}}">
+					<img src="{{link.object.image.src | collection_img_url: 'original' }}" />
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+</div>

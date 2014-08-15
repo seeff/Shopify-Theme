@@ -1,0 +1,7 @@
+<div class="faq">
+  <h4 class="q"><a href="{{article.url}}">{{article.title}}</a></h4>
+  <section class="an rte">
+    {{article.content | strip_html | truncate: 270 }}
+    <a href="{{article.url}}">Read more...</a>
+  </section>
+</div>

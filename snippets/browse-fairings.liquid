@@ -1,0 +1,53 @@
+{% if settings.language == "en" %}
+
+	{% assign browse_heading = settings.browse_heading_en %}
+
+{% elsif settings.language == "es" %}
+
+	{% assign browse_heading = settings.browse_heading_es %}
+
+{% elsif settings.language == "de" %}
+
+	{% assign browse_heading = settings.browse_heading_de %}
+
+{% endif %}
+
+{% comment %} Split it up for the link to work {% endcomment %}
+{% assign heading = browse_heading | split: ' | ' %}
+
+{% assign collection = collections.prosthetic-leg-covers %}
+<div id="home-collection" class="c cf">
+  <h3>{{heading[0]}} <a href="/products/design-your-own">{{heading[1]}}</a></h3>   
+  <div id="owl-wrap">
+      <div id="owl" style="display: none;">
+	{% for product in collection.products %}
+		<div class='item'>
+
+			<div class="prod-image-wrap">  
+              <a href="{{ product.url | within: collection }}">
+                <img class="first-img u" src="{{'blank.png' | asset_url}}" data-src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" width="156" height="234" />
+              </a>
+            </div><!-- .prod-image-wrap -->
+			<a href="{{product.url}}">
+              <b>{{product.title}}</b><br/>
+               {% if product.compare_at_price > product.price %}
+                <span class="product-price" itemprop="price">{{ product.compare_at_price_max | money  }}</span> 
+            
+              {% comment %}
+              <span class="fullprice">({{ product.price | money }} upfront)</span>
+              <span class="deposit r">Pay only 50% today and 50% when we ship!</span>{% endcomment %}
+              {% else %}
+                <span class="product-price" itemprop="price">{{ product.price | money  }} </span>
+              {% endif %}
+			</a>
+		</div>
+	{% else %}
+	<p align="center">You have no products in your Frontpage collection. <a href="http://www.shopify.com/admin/custom_collections">Add some.</a></p>
+	{% endfor %}
+	</div>
+  </div>
+  <div class="showmobile">
+    <a class="btn" href="#">Browse Our Designs</a>
+    <a class="btn" href="#">Design Your Own</a>
+  </div>
+</div>

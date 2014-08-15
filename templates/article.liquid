@@ -1,0 +1,169 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+	{% assign blog_share = settings.blog_share_en %}
+	{% assign blog_other_faq = settings.blog_other_faq_en %}
+	{% assign blog_next_post = settings.blog_next_post_en %}
+	{% assign blog_previous_post = settings.blog_previous_post_en %}
+
+{% elsif settings.language == "es" %}
+
+	{% assign blog_share = settings.blog_share_es %}
+	{% assign blog_other_faq = settings.blog_other_faq_es %}
+	{% assign blog_next_post = settings.blog_next_post_es %}
+	{% assign blog_previous_post = settings.blog_previous_post_es %}
+
+{% elsif settings.language == "de" %}
+
+	{% assign blog_share = settings.blog_share_de %}
+	{% assign blog_other_faq = settings.blog_other_faq_de %}
+	{% assign blog_next_post = settings.blog_next_post_de %}
+	{% assign blog_previous_post = settings.blog_previous_post_de %}
+
+{% endif %}
+
+
+
+
+{% paginate article.comments by 50 %}
+
+{% comment %}
+When a commment has just been submitted, it's not shown right away.
+Shopify needs to wait until it knows for sure that it is not spam to publish it.
+We can still show right away *to its author* the comment he just submitted 
+— although that comment may not have been published yet.
+When a comment is submitted, the browser is redirected to a page that 
+includes the new comment id in its URL. Example:
+http://shopname.myshopify.com/blogs/news/2022072-my-post?comment=3721372
+When a comment ID is specified in an article URL, that comment is accessible in the 
+template through a Liquid object called comment. 
+That comment is a full-fledged comment variable that has all the regular comment properties: 
+http://docs.shopify.com/themes/liquid-variables/comment.
+Note that comment.created_at will only be defined if the comment did not have any blank field 
+— was posted without error.
+{% endcomment %}
+
+{% assign number_of_comments = article.comments_count %}
+
+{% comment %}If a comment was just submitted, and it has no blank fields.{% endcomment %}
+{% if comment and comment.created_at %}
+  {% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+
+{% if article.tags.size > 0 %}
+	{% for tag in article.tags limit:1 %} 
+		{% assign tagkey = tag %}
+    {% endfor %}
+
+{% endif %}
+
+
+
+
+<h1 class="page-title">{{ blog.title }}</h2>
+<div class="c cf thin">
+
+<div class="blog-article">
+  {% if blog.title == "Hubs" %}
+  <a class="hub-return" href="/pages/hubs">Back to all hubs</a>
+{% endif %}  
+  <h1 class="blog-article-title">
+    {{ article.title }}
+  </h1>
+  {% unless blog.title == "Hubs" %}
+  <h3 class="blog-article-date">
+	   Posted by 
+	   {% if article.user.homepage != ""  %}
+	   <a class="author_google_plus_id" href="{{article.user.homepage}}?rel=author">{{ article.user.name}}</a>
+	   {% else %}
+	   {{article.author}}
+	   {% endif %}
+	   | 
+      <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%m.%d.%y' }}</time>
+    </h3>
+  {% endunless %}
+  <div class="rte {% if blog.title == "Hubs" %}hubs{% endif %}">
+    {% if blog.title == "Hubs" %}
+    <div align="center">
+	    {{article.excerpt}}
+    </div>
+    {% endif %}
+    {{ article.content }}
+
+  </div>
+  {% comment %}
+  <ul class="blog-article-meta">
+    {% if blog.comments_enabled? %}
+    <li class="blog-article-meta-comments">
+      <a href="#comments">{{ number_of_comments }} {{ number_of_comments | pluralize: 'comment', 'comments' }}</a>
+    </li>
+    {% endif %}
+    {% if article.tags.size > 0 %}
+    <li class="blog-article-meta-tags">
+      <span>Filed under</span>
+      {% for tag in article.tags limit:1 %} 
+	      <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+      {% endfor %}
+    </li>
+    {% endif %}
+  </ul>
+  {% endcomment %}
+  
+  
+  {% unless blog.title == "Hubs" %}
+<div class="blog-social">	
+  <span>{{blog_share}}</span>
+  <div class="addthis_native_toolbox" data-url="{{article.url}}" data-title="{{article.title}}"></div>
+  {% comment %}
+		<a href="http://twitter.com/share?text={{article.title}}&url={{shop.url}}{{article.url}}" target="_blank"><i class="fa fa-twitter"></i></a>
+		<a href="http://www.facebook.com/sharer.php?u={{shop.url}}{{article.url}}" target="_blank"><i class="fa fa-facebook"></i></a>
+  {% endcomment %}
+</div>
+  {% endunless %}
+  
+
+  
+  
+  
+</div>
+  
+  {% if blog.handle == 'faq' %}
+  <div class="related-articles">
+    <h3 class="line-through"><span>{{blog_other_faq}} "{{tagkey}}"</span></h3>
+    {% assign cnt = '' %}
+   	{% for article in blogs.faq.articles %}
+	    {% for tag in article.tags %}
+		    {% if tag == tagkey %}
+			    {% capture cnt %}{{cnt}}*{% endcapture %}
+				{% if cnt.size <= 5 %}
+			    	{% include 'related-faqs' with article %}
+			    {% endif %}
+		    {% endif %}
+	    {% endfor %}
+    {% endfor %}
+  </div>
+  {% endif %}
+	
+
+
+</div>
+{% endpaginate %}
+{% comment %}
+{% if blog.next_article or blog.previous_article %}
+<div id="prev-next" class="c cf thin">
+	{% if blog.next_article %}
+  <a class="next-post" href="{{ blog.next_article }}">{{blog_next_post}}</a>
+	{% endif %}
+	
+	{% if blog.previous_article %}
+  <a class="prev-post" href="{{ blog.previous_article }}">{{blog_previous_post}}t</a>
+	{% endif %}
+</div>
+{% endif %}
+{% endcomment %}
+
+{% if blog.handle == 'faq' %}
+{% include 'browse-fairings' %}
+{% endif %}

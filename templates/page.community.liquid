@@ -1,0 +1,58 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign read_spotlight_story_part1 = settings.read_spotlight_story_part1_en %}
+    {% assign read_spotlight_story_part2 = settings.read_spotlight_story_part2_en %}
+    {% assign follow_instagram = settings.follow_instagram_en %}
+    {% assign visit_pinterest = settings.visit_pinterest_en %}
+    {% assign tweets_by_unyq = settings.tweets_by_unyq_en %}
+
+{% elsif settings.language == "es" %}
+
+    {% assign read_spotlight_story_part1 = settings.read_spotlight_story_part1_es %}
+    {% assign read_spotlight_story_part2 = settings.read_spotlight_story_part2_es %}
+    {% assign follow_instagram = settings.follow_instagram_es %}
+	{% assign visit_pinterest = settings.visit_pinterest_es %}
+    {% assign tweets_by_unyq = settings.tweets_by_unyq_es %}
+
+
+{% elsif settings.language == "de" %}
+
+    {% assign read_spotlight_story_part1 = settings.read_spotlight_story_part1_de %}
+    {% assign read_spotlight_story_part2 = settings.read_spotlight_story_part2_de %}
+    {% assign follow_instagram = settings.follow_instagram_de %}
+	{% assign visit_pinterest = settings.visit_pinterest_de %}
+    {% assign tweets_by_unyq = settings.tweets_by_unyq_de %}
+
+{% endif %}
+
+<h1 class="page-title">{{ page.title }}</h1>
+
+<div id="content" class="c cf {{page.handle}}">
+	<div class="models">	
+	{% assign counter = 0 %}
+	{% for model in blogs.news.articles %}
+	{% if model.tags contains 'Model' %}
+	  {% assign counter = counter | plus: 1 %}
+      <div class="model {% cycle '', 'middle', '' %}">
+	  	<div class="img">
+	  	<a href="{{model.url}}">
+	  		
+			{{ model.excerpt }}
+	  		
+          <h2>{{model.title | remove: 'Spotlight: '}}</h2>
+		</a>
+		</div>
+		<a class="model-link" href="{{model.url}}">
+          {{read_spotlight_story_part1}} {{model.title | remove: 'Spotlight: '}}{{read_spotlight_story_part2}}
+		</a>
+	  </div>
+	{% endif %}
+	{% endfor %}
+	</div>
+
+ 
+</div>
+
+

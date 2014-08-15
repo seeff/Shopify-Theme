@@ -1,0 +1,100 @@
+{{ "/services/javascripts/currencies.js" | script_tag }}
+{{ "jquery.currencies.min.js" | asset_url | script_tag }}
+
+<script>
+
+// Pick your format here: 
+// money_format or money_with_currency_format
+Currency.format = 'money_format';
+
+var shopCurrency = '{{ shop.currency }}';
+var cookieCurrency = Currency.cookie.read();
+  console.log(cookieCurrency);
+
+/* Fix for customer account pages */
+jQuery('span.money span.money').each(function() {
+  jQuery(this).parents('span.money').removeClass('money');
+});
+
+jQuery('span.money').each(function() {
+  jQuery(this).attr('data-currency-{{ shop.currency }}', jQuery(this).html());
+});
+
+// Select all your currencies buttons.
+// In theory there could be more than 2.
+var buttons = jQuery('#currencies li a');
+
+// When the page loads.
+if (cookieCurrency == null || cookieCurrency == shopCurrency) {
+  Currency.currentCurrency = shopCurrency;
+  
+  setCurrency(shopCurrency);
+}
+else {
+  Currency.currentCurrency = cookieCurrency;
+  Currency.convertAll(shopCurrency, cookieCurrency);
+  buttons.removeClass('selected');
+  jQuery('#currencies span[data-currency=' + cookieCurrency + ']').addClass('selected');
+  
+  setCurrency(cookieCurrency);
+  
+}
+
+function setCurrency(current_currency){
+    jQuery("#current-currency").html(current_currency);
+    jQuery("#current-currency").removeAttr('class');
+    jQuery("#current-currency").addClass(current_currency);
+  	
+}
+
+// When customer clicks on a currency button.
+buttons.click(function(e) {
+  e.preventDefault();
+  buttons.removeClass('selected');
+  jQuery(this).addClass('selected');
+  var newCurrency =  jQuery(this).attr('data-currency');
+  setCurrency(newCurrency);
+  Currency.convertAll(Currency.currentCurrency, newCurrency);
+  
+});
+
+
+
+// For options.
+var original_selectCallback = window.selectCallbackMoney;
+var selectCallbackMoney = function(variant, selector) {
+  original_selectCallback(variant, selector);
+  Currency.convertAll(shopCurrency, jQuery('#currencies span.selected').attr('data-currency'));
+  jQuery('.selected-currency').text(Currency.currentCurrency);
+  jQuery('span.money').each(function() {
+    jQuery(this).attr('data-currency-{{ shop.currency }}', jQuery(this).html());
+  });
+};
+
+jQuery('.selected-currency').text(Currency.currentCurrency);
+  
+
+  $(function() {
+    if(!cookieCurrency) {
+        
+      $.ajax({
+          url:'//freegeoip.net/json/',
+          type: 'post',
+          dataType: 'jsonp',
+          success: function(location) {
+            //console.log(location.country_code);
+            if(location.country_code==='CA') {
+              $('#currency-list li.CAD a').trigger('click');
+            }
+            if(location.country_code==='AU') {
+              $('#currency-list li.AUD a').trigger('click');
+            }
+            if(location.country_code==='GB') {
+              $('#currency-list li.GBP a').trigger('click');
+            }
+          }
+      });
+    }
+  });
+
+</script>

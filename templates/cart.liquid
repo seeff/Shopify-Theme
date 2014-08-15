@@ -1,0 +1,207 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+	{% assign cart_h1 = settings.cart_h1_en %}
+	{% assign cart_item = settings.cart_item_en %}
+	{% assign cart_price = settings.price_en %}
+	{% assign cart_qty = settings.qty_en %}
+	{% assign cart_total = settings.total_en %}
+	{% assign cart_remove = settings.cart_remove_en %}
+	{% assign cart_keep_shopping_link = settings.cart_keep_shopping_link_en %}
+	{% assign cart_update = settings.cart_update_en %}
+	{% assign cart_checkout = settings.cart_checkout_en %}
+
+
+{% elsif settings.language == "es" %}
+
+	{% assign cart_h1 = settings.cart_h1_es %}
+	{% assign cart_item = settings.cart_item_es %}
+	{% assign cart_price = settings.price_es %}
+	{% assign cart_qty = settings.qty_es %}
+	{% assign cart_total = settings.total_es %}
+	{% assign cart_remove = settings.cart_remove_es %}
+	{% assign cart_keep_shopping_link = settings.cart_keep_shopping_link_es %}
+	{% assign cart_update = settings.cart_update_es %}
+	{% assign cart_checkout = settings.cart_checkout_es %}
+ 
+{% elsif settings.language == "de" %}
+    
+	{% assign cart_h1 = settings.cart_h1_de %}
+	{% assign cart_item = settings.cart_item_de %}
+	{% assign cart_price = settings.price_de %}
+	{% assign cart_qty = settings.qty_de %}
+	{% assign cart_total = settings.total_de %}
+	{% assign cart_remove = settings.cart_remove_de %}
+	{% assign cart_keep_shopping_link = settings.cart_keep_shopping_link_de %}
+  	{% assign cart_update = settings.cart_update_de %}
+	{% assign cart_checkout = settings.cart_checkout_de %}
+	
+{% endif %}
+
+<h1 class="page-title">{{cart_h1}}</h1>
+
+<div id="cart-page" class='c cf'>
+  
+{% if cart.item_count > 0 %}
+
+<form action="/cart" method="post">
+  
+  <table width="100%" class="hidemobile">
+    
+    <tbody>
+
+    {% for item in cart.items %}    
+    
+      {% comment %}
+      Determining the handle of the collection that was last seen for the 'continue shopping' link.
+      {% endcomment %}
+      
+      {% if forloop.first %}
+        {% assign collection_url = item.product.collections.first.url %}
+        {% if collection_url == '/collections/frontpage' or collection_url == '' %}{% assign collection_url = '/collections/all' %}{% endif %}
+      {% endif %}
+
+      <tr>
+        <td>
+          <a href="{{ item.product.url | within: collections.all }}">  
+            <img src="{{ item.product.featured_image.src | product_img_url: 'compact' }}" alt="{{ item.title | escape }}" />
+          </a>
+        </td>
+        <td>
+          <b class="th">{{cart_item}}</b>
+        	<div class="cart-product-description">
+            <a href="{{ item.product.url | within: collections.all }}">
+            {{ item.product.title }}
+            </a>
+
+          <div class="selected-variants">
+          {% if item.variant.option1 != 'Default Title' %}
+			  {% for i in (1..item.product.options.size) %}
+			    {% case i %}
+			    {% when 1 %}
+            <span>
+			    	{% if item.product.options.first != "Title" %}
+              
+			      <b>{{ item.product.options.first }}:</b> 
+              {% endif %}
+              <em>{{ item.variant.option1 }}</em></span>
+			    {% when 2 %}			
+			      {% if item.product.options.size == 2 %}
+			        <span><b>{{ item.product.options.last}}:</b> {{ item.variant.option2 }}</span>
+			      {% else %}
+			        <span><b>{{ item.product.options | remove : item.product.options.first | remove: item.product.options.last  }}:</b> {{ item.variant.option2 }}</span>
+			      {% endif %}
+			    {% else %}  
+			      <span><b>{{ item.product.options.last }}:</b> {{ item.variant.option3 }}</span>
+			    {% endcase %}
+			  {% endfor %}
+			{% endif %}
+          </div>
+        	</div>
+        </td>
+        <td>
+          <b class="th">{{cart_price}}</b>
+        	{{ item.price | money }}
+        </td>
+        <td>
+          <b class="th">{{cart_qty}}</b>
+        	<input class="td-qty" type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" />
+        </td>
+        <td>
+          <b class="th">{{cart_total}}</b>
+        	{{ item.line_price | money }}
+        </td>
+        <td>
+          <a class="c-remove" href="/cart/change?line={{ forloop.index }}&quantity=0">X</a>
+        </td>
+      </tr>
+    {% endfor %}
+    
+    </tbody>
+    
+  </table>
+  
+  <ul id="mobile-cart-page" class="showmobile">
+  {% for item in cart.items %}
+  <li class="cf">
+    <div class="forty l">
+      <a href="{{item.product.url}}"><img src="{{ item.product.images.first | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" /></a>
+    </div>
+    <div class="sixty r">
+      <span class="carttitle"><b><a href="{{item.product.url}}">{{ item.product.title }}</a></b></span>
+      {% if item.variant.option1 != 'Default Title' and item.variant.option1 != 'Default' %}
+      {% for i in (1..item.product.options.size) %}
+      {% case i %}
+      {% when 1 %}
+      <span>
+      {% if item.product.options.first != "Title" %}
+        <b>{{ item.product.options.first }}:</b> 
+        {% endif %}
+        <em>{{ item.variant.option1 }}</em></span>
+      {% when 2 %}			
+      {% if item.product.options.size == 2 %}
+      <span><b>{{ item.product.options.last}}:</b> {{ item.variant.option2 }}</span>
+      {% else %}
+      <span><b>{{ item.product.options | remove : item.product.options.first | remove: item.product.options.last  }}:</b> {{ item.variant.option2 }}</span>
+      {% endif %}
+      {% else %}  
+      <span><b>{{ item.product.options.last }}:</b> {{ item.variant.option3 }}</span>
+      {% endcase %}
+      {% endfor %}
+      {% endif %}
+      <span class="cartprice"><b>{{cart_price}}:</b> {{ item.variant.price | money }}</span>
+      <span class="cartquantity"><b>{{cart_qty}}:</b> {{ item.quantity }}</span>
+      <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cartremove" title="remove">x {{cart_remove}}</a>
+    </div>
+  </li>
+  {% endfor %}
+  </ul>
+  
+  {% comment %}
+  For the checkout and update buttons to work, they need to use
+  a name attribute set to 'checkout' and 'update', respectively. That's case-sensitive.
+  {% endcomment %}
+  <div class="l return-to-store">
+    <a class="keep-shopping" href="{{ collection_url }}">{{cart_keep_shopping_link}}</a>
+  </div>
+  <div class="r">
+    <input class="update" type="submit" name="update" value="{{cart_update}}" />
+    <h3 class='total'>{{cart_total}}: {{ cart.total_price | money }}</h3>
+  </div>
+
+    <div class="cf"></div>
+    <div align="right">
+      <input id="checkout" class="btn" type="submit" name="checkout" value="{{cart_checkout}}" />    
+    
+    {% comment %}Paypal and Google checkout buttons
+    {% if additional_checkout_buttons %}
+    <p class="additional-checkout-buttons">
+      {{ content_for_additional_checkout_buttons }}
+    </p>
+    {% endif %}    
+    {% endcomment %}
+    </div>
+
+  
+  {% comment %}
+  For the special instructions to be submitted with order,
+  they need to use a name attribute set to 'note'. That's case-sensitive.
+  
+  <div>
+    <p>Special instructions for seller</p>
+    <textarea name="note">{{ cart.note }}</textarea>
+  </div>
+  {% endcomment %}
+
+</form>
+
+{% else %}
+
+<div>
+  <h2>It appears that your cart is currently empty!</h2>
+  <h3>You can continue browsing <a href="/collections/all">here</a>.</h3>
+</div>
+
+{% endif %}
+</div>

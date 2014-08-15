@@ -1,0 +1,15 @@
+<h1 class="page-title">{{ page.title }}</h1>
+
+{% capture author_google_plus_id %}{{ article.user.homepage | split: '|' | last | remove: 'http://'; | remove: author_twitter_handle }}{% endcapture %}
+{% if author_google_plus_id != "" %}
+<a class="author_google_plus_id" href="https://plus.google.com/{{author_google_plus_id}}?rel=author">{{ article.author }}</a>
+{% endif %}
+
+<div id="content" class="{{page.handle}}">
+	<div class="{% if page.handle == 'policies'%}thin {% endif %}c cf">
+		
+		<div class="rte">
+		  {{ page.content }}
+		</div>
+	</div>
+</div>

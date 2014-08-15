@@ -1,0 +1,77 @@
+<div class="sidebar">
+	{% if template contains 'collection' %}
+	<div class="sortContainer">
+	<select name="sortBox" id="sortBox" class="selectBox" >
+		<option value="none" selected="selected">Sort By: (beta)</option>
+        <option value="a_z">Name: A to Z</option>
+        <option value="z_a">Name: Z to A</option>                    
+        <option value="l_h">Price: Low to High</option>                    
+        <option value="h_l">Price: High to Low</option>                    
+    </select>
+    <span class="dd-triangle"></span>
+	</div>
+	<p class="grey small"><em>Don't get too excited, Rachel, but I may have found the answer to this problem</em></p>
+    {% endif %}
+    {% comment %}
+	<nav role="navigation">
+        <ul class="accordion">
+          {% for link in linklists.collection-menu.links %}
+          {% assign has_sub_menu = false %}
+          {% assign has_sub_categories = false %}
+          {% assign parent_link_active = false %}
+          {% assign child_list_handle = link.title | handle %}
+          {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+            {% assign has_sub_menu = true %}
+            {% for l in linklists[child_list_handle].links %}
+              {% if page_title == l.title %}
+                {% assign parent_link_active = true %}
+              {% endif %}
+            {% endfor %}
+          {% elsif link.type == 'collection_link' and link.object.all_tags.size > 0 %}
+            {% assign has_sub_categories = true %}
+          {% endif %}
+          <li>
+            {{ link.title | link_to: link.url }}
+            
+            {% if has_sub_menu or has_sub_categories %}
+            
+            <ul>
+              {% if has_sub_menu %}
+                {% for l in linklists[child_list_handle].links %}
+                <li>
+                  <a class="{% if forloop.first %}first{% elsif forloop.last %}last{% endif %}" href="{{ l.url }}">{{ l.title }}</a>
+                </li>
+                {% endfor %}
+              {% elsif has_sub_categories %}
+                {% for tag in link.object.all_tags %}
+                <li>
+                  <a class="{% if forloop.first %}first{% elsif forloop.last %}last{% endif %}" href="{{ link.url }}/{{ tag | handle }}">{{ tag }}</a>
+                </li>
+                {% endfor %}
+              {% endif %}
+            </ul>
+
+            {% endif %}
+          </li>
+          {% endfor %}
+          <li><a href="/collections/all"><b>SHOP ALL</b></a></li>
+        </ul>
+      </nav>
+      
+      {% if template contains 'collection' %}
+      <div id="filters">
+		  {% assign tags = 'Black, Red, Green, Blue, White' | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+	      <b>FILTER BY COLOR</b><br/>
+	      {% for tag in tags %}	     
+	      {% if current_tags contains tag %} 
+	      <input type="checkbox" id="{{tag | handle}}" class="colorfilter" name="{{tag | handle}}" value="{{tag | handle}}" checked> {{tag}}<br>
+	      {% elsif collection.all_tags contains tag %}
+	      <input type="checkbox" id="{{tag | handle}}" class="colorfilter" name="{{tag | handle}}" value="{{tag | handle}}" > {{tag}}<br>
+	      {% endif %}
+	      {% endfor %}
+      </div>
+      {% endif %}
+      {% endcomment %}
+  
+  
+</div>

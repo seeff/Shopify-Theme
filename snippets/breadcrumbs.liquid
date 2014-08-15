@@ -1,0 +1,52 @@
+{% unless template == 'index' or template == 'cart' %}
+<div id="breadcrumbs">
+ <div class="c">
+  <a href="/" class="homepage-link" title="Back to the frontpage">Home</a>
+  {% if template contains 'product' %}
+    {% if collection %}            
+      <span class="separator">/</span> 
+      {% if collection.handle %}
+         {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+         {{ collection.title | link_to: url }}
+      {% endif %}
+    {% endif %}
+    <span class="separator">/</span>
+    <span class="page-title">{{ product.title }}</span>
+  {% elsif template contains 'collection' and collection.handle %}
+      {% if current_tags %}
+        <span class="separator">/</span>
+        {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+        {{ collection.title | link_to: url }}
+        <span class="separator">/</span>
+        <span class="page-title">{{ current_tags.first }}</span>
+      {% else %}
+        <span class="separator">/</span>
+        <span class="page-title">{{ collection.title }}</span>
+      {% endif %}
+  {% elsif template == 'article' %}
+      <span class="separator">/</span> 
+      {{ blog.title | link_to: blog.url }}
+      <span class="separator">/</span>
+      <span class="page-title">{{ article.title }}</span>
+  {% elsif template contains 'page' %}
+     <span class="separator">/</span>
+     <span class="page-title">{{ page.title }}</span>
+  {% else %}
+     <span class="separator">/</span>
+     <span class="page-title">{{ page_title }}</span>
+  {% endif %}
+  {% if template contains 'collection' %}
+	<div class="sortContainer r">
+		<select name="sortBox" id="sortBox" class="selectBox" >
+			<option value="none" selected="selected">Sort By: (beta)</option>
+	        <option value="a_z">Name: A to Z</option>
+	        <option value="z_a">Name: Z to A</option>                    
+	        <option value="l_h">Price: Low to High</option>                    
+	        <option value="h_l">Price: High to Low</option>                    
+	    </select>
+    <span class="dd-triangle"></span>
+	</div>
+  {% endif %}
+ </div>
+</div>
+{% endunless %}

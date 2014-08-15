@@ -1,0 +1,82 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign register_first_name = settings.firstname_label_en %}
+    {% assign register_last_name = settings.lastname_label_en %}
+    {% assign register_email = settings.email_label_en %}
+    {% assign register_password = settings.password_label_en %}
+    {% assign register_create_account_h2 = settings.create_account_h2_en %}
+    {% assign register_create_button = settings.create_button_en %}
+    {% assign return_to_store = settings.return_to_store_en %}
+
+
+{% elsif settings.language == "es" %}
+
+    {% assign register_first_name = settings.firstname_label_es %}
+    {% assign register_last_name = settings.lastname_label_es %}
+    {% assign register_email = settings.email_label_es %}
+    {% assign register_password = settings.password_label_es %}
+    {% assign register_create_account_h2 = settings.create_account_h2_es %}
+    {% assign register_create_button = settings.create_button_es %}
+    {% assign return_to_store = settings.return_to_store_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign register_first_name = settings.firstname_label_de %}
+    {% assign register_last_name = settings.lastname_label_de %}
+    {% assign register_email = settings.email_label_de %}
+    {% assign register_password = settings.password_label_de %}
+    {% assign register_create_account_h2 = settings.create_account_h2_de %}
+    {% assign register_create_button = settings.create_button_de %}
+    {% assign return_to_store = settings.return_to_store_de %}
+
+{% endif %}
+
+
+{% layout settings.customer_layout %}
+<div id="customer-wrapper" class="desktop-12 mobile-3">
+<div id="customer-background">
+<div id="template">
+  <div id="customer" class="four columns">
+      <!-- Create Customer -->
+	  <div id="create-customer">
+	    <div class="template_header">
+          <h2 class="title">{{register_create_account_h2}}</h2>
+	    </div>
+
+	    {% form 'create_customer' %}
+	      {{ form.errors | default_errors }}
+
+	      <div id="first_name" class="clearfix large_form">
+            <label for="first_name" class="login">{{register_first_name}}</label>
+	        <input type="text" value="" name="customer[first_name]" id="first_name" class="large" size="30" />
+	      </div>
+
+	      <div id="last_name" class="clearfix large_form">
+	        <label for="last_name" class="login">{{register_last_name}}</label>
+	        <input type="text" value="" name="customer[last_name]" id="last_name" class="large" size="30" />
+	      </div>
+
+	      <div id="email" class="clearfix large_form">
+	        <label for="email" class="login">{{register_email}}</label>
+	        <input type="email" value="" name="customer[email]" id="email" class="large" size="30" />
+	      </div>
+
+	      <div id="password" class="clearfix large_form">
+	        <label for="password" class="login">{{register_password}}</label>
+	        <input type="password" value="" name="customer[password]" id="password" class="large password" size="30" />
+	      </div>
+
+	      <div class="action_bottom">
+            <input class="secondary button" type="submit" value="{{register_create_button}}" />
+            <br/>
+            <span class="note">or <a href="{{ shop.url }}">{{return_to_store}}</a></span>
+	      </div>
+	    {% endform %}
+	  </div><!-- /#create-customer -->
+  </div>
+</div>
+</div>
+</div>
+

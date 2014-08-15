@@ -1,0 +1,281 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+  {% assign hero_h1 = settings.home_h1_en %}
+  {% assign hero_sub = settings.home_sub_h1_en %}
+  {% assign hero_btn = settings.home_hero_btn_en %}
+  {% assign hero_below_btn = settings.home_hero_below_btn_en %}
+  {% assign hero_link = settings.home_hero_link_en %}
+
+  {% assign section_1_heading = settings.section_1_heading_en %}
+  {% assign section_1_p = settings.section_1_p_en %}
+  {% assign section_1_btn = settings.section_1_btn_en %}
+
+  {% assign collections_page_link = settings.collections_page_link_en %}
+
+  {% assign section_2_heading = settings.section_2_heading_en %}
+  {% assign section_2_p = settings.section_2_p_en %}
+  {% assign section_2_btn = settings.section_2_btn_en %}
+
+  {% assign video_text = settings.video_text_en %}
+
+  {% assign featured_in = settings.featured_in_en %}
+  {% assign featured_in = settings.featured_in_en %}
+
+  {% assign clinicians_link = settings.clinicians_link_en %}
+  {% assign community_link = settings.community_link_en %}
+  {% assign gift_card_link = settings.gift_card_link_en %}
+
+  {% assign cta_1 = settings.cta_1_en %}
+  {% assign cta_2 = settings.cta_2_en %}
+  {% assign cta_3 = settings.cta_3_en %}
+
+{% elsif settings.language == "es" %}
+
+  {% assign hero_h1 = settings.home_h1_es %}
+  {% assign hero_sub = settings.home_sub_h1_es %}
+  {% assign hero_btn = settings.home_hero_btn_es %}
+  {% assign hero_below_btn = settings.home_hero_below_btn_es %}
+  {% assign hero_link = settings.home_hero_link_es %}
+
+  {% assign collections_page_link = settings.collections_page_link_es %}
+
+
+  {% assign section_1_heading = settings.section_1_heading_es %}
+  {% assign section_1_p = settings.section_1_p_es %}
+  {% assign section_1_btn = settings.section_1_btn_es %}
+
+  {% assign section_2_heading = settings.section_2_heading_es %}
+  {% assign section_2_p = settings.section_2_p_es %}
+  {% assign section_2_btn = settings.section_2_btn_es %}
+
+  {% assign video_text = settings.video_text_es %}
+
+  {% assign featured_in = settings.featured_in_es %}
+
+  {% assign cta_1 = settings.cta_1_es %}
+  {% assign cta_2 = settings.cta_2_es %}
+  {% assign cta_3 = settings.cta_3_es %}
+
+
+
+{% elsif settings.language == "de" %}
+  
+  {% assign hero_h1 = settings.home_h1_de %}
+    {% assign hero_sub = settings.home_sub_h1_de %}
+    {% assign hero_btn = settings.home_hero_btn_de %}
+    {% assign hero_below_btn = settings.home_hero_below_btn_de %}
+    {% assign hero_link = settings.home_hero_link_de %}
+
+  {% assign collections_page_link = settings.collections_page_link_de %}
+
+
+    {% assign section_1_heading = settings.section_1_heading_de %}
+  {% assign section_1_p = settings.section_1_p_de %}
+  {% assign section_1_btn = settings.section_1_btn_de %}
+
+  {% assign section_2_heading = settings.section_2_heading_de %}
+  {% assign section_2_p = settings.section_2_p_de %}
+  {% assign section_2_btn = settings.section_2_btn_de %}
+
+  {% assign video_text = settings.video_text_de %}
+
+  {% assign featured_in = settings.featured_in_de %}
+
+  {% assign cta_1 = settings.cta_1_de %}
+  {% assign cta_2 = settings.cta_2_de %}
+  {% assign cta_3 = settings.cta_3_de %}
+
+
+{% endif %}
+
+
+
+{% include 'gleam' %}
+
+
+
+{% comment %}
+<div id="mainslider" class="flexslider cf hidemobile">
+  <ul class="slides">
+    <li>
+      <a href="{{hero_link}}">
+        {% capture hero_tag %}UNYQ {{hero_h1}} - {{hero_sub}}{% endcapture %}
+        {{ 'slideshow_1.jpg' | asset_url | img_tag: hero_tag }}
+        <div class="slidetext">
+          <h1 class="script">{{hero_h1}}</h1>
+          <div class="line-through-white"><span>{{hero_sub}}</span></div>
+          <div class="btn">{{hero_btn}} <span class="h1triangle"></span></div>
+          <p>{{hero_below_btn}}</p>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+{% endcomment %}
+<div id="hero" class="cf hidemobile">
+	<a href="{{hero_link}}">
+        {% capture hero_tag %}UNYQ {{hero_h1}} - {{hero_sub}}{% endcapture %}
+        <img src="{{ 'slideshow_1.jpg' | asset_url }}" alt="{{hero_tag}}" width="100%"/>
+        <div class="slidetext">
+          <h1 class="script">{{hero_h1}}</h1>
+          <div class="line-through-white"><span>{{hero_sub}}</span></div>
+          <div class="btn">{{hero_btn}} <span class="h1triangle"></span></div>
+          <p>{{hero_below_btn}}</p>
+        </div>
+      </a>
+</div>
+
+<div id="hero-mobile" class="showmobile">
+  <a href="{{hero_link}}">
+    {{ 'slideshow_1_mobile.jpg' | asset_url | img_tag: hero_tag }}
+    <div class="slidetext">
+      <h1 class="script">{{hero_h1}}</h1>
+      <div class="line-through-white"><span>{{hero_sub}}</span></div>
+      <div class="btn">{{hero_btn}} <span class="h1triangle"></span></div>
+      <p>{{hero_below_btn}}</p>
+    </div>
+  </a>
+</div>
+
+
+
+{% include 'browse-fairings' %}
+
+
+
+<div id="whole-again" class="rel cf">
+  <a href="{{collections_page_link}}">
+    <img class="u hidemobile" src="{{'blank.gif' | asset_url}}" data-src="{{'whole-again.jpg' | asset_url }}" width="100%" alt="{{section_1_heading}}" />
+    <img class="u showmobile" src="{{'blank.gif' | asset_url}}" data-src="{{'symmetry-mobile.jpg' | asset_url}}" width="100%" alt="{{section_1_heading}}" />
+    <div class="hc">
+      <h2>{{section_1_heading}}</h2>
+      <p>{{section_1_p}}</p>
+      <div class="btn arr">{{section_1_btn}}</div>
+    </div>
+  </a>
+</div>
+
+<div id="freedom" class="rel cf">
+  <a href="{{collections_page_link}}">
+  <img class="u hidemobile" src="{{'blank.gif' | asset_url}}" data-src="{{'free-to-choose.jpg' | asset_url }}"  width="100%" alt="{{section_2_heading}}" />
+  <img class="u showmobile" src="{{'blank.gif' | asset_url}}" data-src="{{'freedom-mobile.jpg' | asset_url}}" width="100%" alt="{{section_2_heading}}" />
+    <div class="hc">
+      <h2>{{section_2_heading}}</h2>
+      <p>{{section_2_p}}</p>
+      <div class="btn arr">{{section_2_btn}}</div>
+    </div>
+  </a>
+</div>
+
+<div id="testimonials">
+  <div class="testimonials cf">
+  <div class="flexslider">
+      <ul class="slides">
+        {% for article in blogs.reviews.articles %}
+          <li>
+              <div class="testimonial" itemscope itemtype="http://data-vocabulary.org/Review">
+                <div class="test-content">
+                <span class="hidden" itemprop="itemreviewed">{{hero_h1}}</span>
+                
+                <time class="hidden" itemprop="dtreviewed" datetime="{{article.published_at}}">{{article.published_at}}</time>
+                <span class="hidden" itemprop="summary">{{article.content}}</span>
+                <span itemprop="description">{{article.content}}</span>
+        <span class="hidden" itemprop="rating">5.0</span>
+                <span class="reviewer" itemprop="reviewer">- {{article.title}}</span>
+                </div>
+                <div class="test-image">{{ article.excerpt }}</div>
+              </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div id="video">
+  <a href="http://www.youtube.com/embed/FAUIa4TpaqI?autoplay=1" class="playbtn various fancybox.iframe">
+    <img class="u hidemobile" src="{{'blank.gif' | asset_url}}" data-src="{{'watch-video-bg.jpg' | asset_url }}" width="100%" alt="{{video_text}}" />
+    <img class="u showmobile" src="{{'blank.gif' | asset_url}}" data-src="{{'video-mobile.jpg' | asset_url}}" width="100%" alt="{{video_text}}" />
+  <div id="video-box">
+    <i class="fa fa-play"></i>
+    <p>{{video_text}}</p>
+  </div>
+</a>
+</div>
+
+
+
+<div id="wp">
+  <div class="c cf">
+    <div class="line-through">
+      <span>{{featured_in}}
+        <a href="http://www.washingtonpost.com/blogs/innovations/wp/2014/05/07/the-company-thats-determined-to-make-prosthetics-hip-and-stylish/" target="_blank"><img src="{{'washington-post-wh.gif' | asset_url }}" alt="Featured in Washington Post" width="225" height="43" /></a>  
+        <a href="http://www.forbes.com/sites/tarunwadhwa/2014/06/26/using-3d-printing-and-design-to-change-the-way-we-look-at-disability/" target="_blank"><img src="{{'forbes-wh.gif' | asset_url}}" alt="Featured in Forbes" width="100" height="43" /></a> 
+        <a href="http://www.huffingtonpost.com/tarun-wadhwa/using-3d-printing-and-des_b_5537870.html" target="_blank"><img src="{{'huff-post-wh.gif' | asset_url}}" alt="Featured in Huffington Post" width="129" height="43" /></span>
+    </div>
+  </div>
+</div>
+
+
+<div class="c cf">
+  <div id="sketches">
+  
+    <a href="{{clinicians_link}}">
+      <div class="sketch">
+      	<img src="{{'schedule.gif' | asset_url }}" alt="Schedule a free call with our clinicians" width="200" height="190" />
+        <h4>{{cta_1}}</h4>
+    </div>
+    </a>
+    <a href="{{gift_card_link}}">
+    <div class="sketch">
+      <img src="{{'gift-card.gif' | asset_url }}" alt="Buy a gift card for someone Special" width="200" height="190" />
+      <h4>{{cta_2}}</h4>
+    </div>
+    </a>
+    <a href="{{community_link}}">
+      <div class="sketch">
+        <img src="{{'stylish.gif' | asset_url }}" alt="Read more about our stylish community" width="200" height="190" />
+        <h4>{{cta_3}}</h4>
+      </div>
+    </a>
+  </div>
+</div>
+
+
+
+<div style="display: none;">
+  
+<iframe width="1280" height="720" src="//www.youtube.com/embed/FAUIa4TpaqI?rel=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<script>
+$(window).load(function() {
+	$('#mainslider').flexslider({
+      animation: 'fade',
+      slideshow: false,
+      directionNav: true,
+      controlNav: false
+    });
+    $('#testimonials .flexslider').flexslider({
+      animation: 'fade',
+      slideshow: true,
+      directionNav: false,
+      controlNav: false
+    });
+    $("a.various").fancybox({
+	    maxWidth  : 800,
+	    maxHeight : 600,
+	    fitToView : false,
+	    width   : '70%',
+	    height    : '70%',
+	    autoSize  : false,
+	    closeClick  : false,
+	    openEffect  : 'none',
+	    closeEffect : 'none'
+	  });
+});
+</script>

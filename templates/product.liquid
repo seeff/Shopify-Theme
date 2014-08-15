@@ -1,0 +1,406 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign product_details_h4 = settings.product_details_h4_en %}
+    {% assign product_back_ordered_msg = settings.product_back_ordered_msg_en %}
+    {% assign next_product_button = settings.next_product_button_en %}
+    {% assign prev_product_button = settings.prev_product_button_en %}
+    {% assign product_selling_points_1 = settings.product_selling_points_1_en %}
+    {% assign product_selling_points_2 = settings.product_selling_points_2_en %}
+    {% assign product_selling_points_3 = settings.product_selling_points_3_en %}
+    {% assign product_selling_points_4 = settings.product_selling_points_4_en %}
+    {% assign product_deposit_msg = settings.product_deposit_msg_en %}
+    {% assign add_accessories_msg = settings.add_accessories_msg_en %}
+    {% assign qty = settings.qty_en %}
+    {% assign size_guide = settings.size_guide_en %}
+    {% assign your = settings.your_en %}
+    {% assign product_description_msg = settings.product_description_msg_en %}
+	
+{% elsif settings.language == "es" %}
+
+    {% assign product_details_h4 = settings.product_details_h4_es %}
+    {% assign product_back_ordered_msg = settings.product_back_ordered_msg_es %}
+    {% assign next_product_button = settings.next_product_button_es %}
+    {% assign prev_product_button = settings.prev_product_button_es %}
+    {% assign product_selling_points_1 = settings.product_selling_points_1_es %}
+    {% assign product_selling_points_2 = settings.product_selling_points_2_es %}
+    {% assign product_selling_points_3 = settings.product_selling_points_3_es %}
+    {% assign product_selling_points_4 = settings.product_selling_points_4_es %}
+    {% assign product_deposit_msg = settings.product_deposit_msg_es %}
+    {% assign add_accessories_msg = settings.add_accessories_msg_es %}
+    {% assign qty = settings.qty_es %}
+    {% assign size_guide = settings.size_guide_es %}
+    {% assign your = settings.your_es %}
+    {% assign product_description_msg = settings.product_description_msg_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign product_details_h4 = settings.product_details_h4_de %}
+    {% assign product_back_ordered_msg = settings.product_back_ordered_msg_de %}
+    {% assign next_product_button = settings.next_product_button_de %}
+    {% assign prev_product_button = settings.prev_product_button_de %}
+    {% assign product_selling_points_1 = settings.product_selling_points_1_de %}
+    {% assign product_selling_points_2 = settings.product_selling_points_2_de %}
+    {% assign product_selling_points_3 = settings.product_selling_points_3_de %}
+    {% assign product_selling_points_4 = settings.product_selling_points_4_de %}
+    {% assign product_deposit_msg = settings.product_deposit_msg_de %}
+    {% assign add_accessories_msg = settings.add_accessories_msg_de %}
+    {% assign qty = settings.qty_de %}
+    {% assign size_guide = settings.size_guide_de %}
+    {% assign your = settings.your_de %}
+    {% assign product_description_msg = settings.product_description_msg_de %}
+
+{% endif %}
+
+
+<div id="product" class="c cf">
+
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+  <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
+  
+  <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart" class="sixty r testing">
+    
+    <div id="product-details" >
+      
+      <h1 itemprop="name" class="hidemobile">
+
+	   	{% if collection.previous_product %}<a class="prev-product" href="{{collection.previous_product}}">&nbsp;</a>{% endif %}
+
+      	{{ product.title }}
+      	
+	      
+	    {% if collection.next_product %}<a class="next-product" href="{{collection.next_product}}">&nbsp;</a>{% endif %}
+	      
+      </h1>
+      
+      <h1 itemprop="name" class="showmobile">
+        {{ product.title }}<br/>
+      	
+      	 {% if product.compare_at_price > product.price %}
+        <span class="product-price" itemprop="price">{{ product.compare_at_price_max | money  }}</span> <span class="fullprice">({{ product.price | money }} upfront)</span>
+        <span class="deposit">Pay only 50% today and 50% when we ship!</span>
+      {% else %}
+      	<span class="product-price" itemprop="price">{{ product.price | money  }} </span>
+      {% endif %}
+	      
+      </h1>
+     
+      
+      
+      {% assign hide_default_title = false %}
+      {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+        {% assign hide_default_title = true %}
+      {% endif %}       
+
+      
+      
+      <div id="mobile-images" class="showmobile">
+ 		<div class="flexslider">
+ 			<ul class="slides">
+ 			{% for image in product.images %}
+		      <li>
+			        <a href="{{ image | product_img_url: 'original' }}" data-original-image="{{ image | product_img_url: 'original' }}" >
+		            	<img src="{{ image | product_img_url: 'original' }}" alt="{{ image.alt | escape }}" />
+		            </a>
+		      </li>
+		      {% endfor %}
+ 			
+ 			</ul>
+ 		</div>
+	  </div>
+            
+      <div id="product-description" class="rte" itemprop="description">
+      	<h4>{{product_details_h4}}</h4>
+        {{ product.description }}
+        {% if product.type contains 'Fairing' %}
+        <span>
+          <p>
+            {{your}} {{ product.title }} {{product_description_msg}}
+         </p>
+        </span>
+        
+        <span class="product-selling-points">
+          <ul>
+            <li>{{product_selling_points_1}}</li>
+            <li>{{product_selling_points_2}}</li>
+            <li>{{product_selling_points_3}}</li>
+          </ul>
+        </span>
+        {% endif %}
+
+      </div>
+      
+      {% if product.compare_at_price > product.price %}
+        <span class="product-price" itemprop="price">{{ product.compare_at_price_max | money  }}</span> <span class="fullprice">({{ product.price | money }} upfront)</span>
+      <span class="deposit r">{{product_deposit_msg}}</span>
+      {% else %}
+      	<span class="product-price" itemprop="price">{{ product.price | money  }} </span>
+      {% endif %}
+            
+         
+             
+      <div id="backorder" class="hidden">
+        <p><span id="selected-variant"></span> {{product_back_ordered_msg}}</p>
+      </div>
+      
+      <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
+       <select id="product-select" name="id" class="hidden">
+       {% for variant in product.variants %}
+         <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+       {% endfor %}
+       </select>
+        {% comment %}
+        <div class="selector-wrapper">      
+          <label>{{qty}}</label><input class="quantity" type="number" value="1" name="quantity" />
+        </div>
+        {% endcomment %}
+        
+        <div id="bk-questions" style="display: none;">
+          <h4>Do You Have a Knee Sleeve?</h4>
+          <input type="radio" name="properties[sleeve]" value="Yes" /> Yes
+          <input type="radio" name="properties[sleeve]" value="No" /> No
+          <br/>
+          <h4>Do you have a tube?</h4>
+          <input type="radio" name="properties[tube]" value="Yes" /> Yes
+          <input type="radio" name="properties[tube]" value="No" /> No
+        </div>
+      </div>     
+        
+      <div id="product-add">
+        <input type="submit" class="btn" name="add" id="add" value="Add to Bag">
+      </div>
+            
+      {% comment %}
+      All themes by Shopify should support the Grapevine Reviews app out of the box.
+      https://apps.shopify.com/grapevine-reviews
+      {% endcomment %} 
+      
+      {% include 'share' %}
+      
+
+      
+     
+      {% comment %}
+      
+      <div id="shopify-product-reviews" class="cf" data-id="{{product.id}}">
+      
+      {{ product.metafields.spr.reviews }}
+      </div>
+      
+      
+
+      {% if collection %}
+        {% if collection.previous_product or collection.next_product %}
+        <div>     
+        {% if collection.previous_product %}
+          {% capture prev_url %}{{ collection.previous_product}}#content{% endcapture %}
+          <span class="left"><a href="{{prev_url}}">&larr;{{prev_product_button}}</a></span>
+        {% endif %}
+        {% if collection.next_product %}
+          {% capture next_url %}{{ collection.next_product}}#content{% endcapture %}
+          <span class="right"><a href="{{next_url}}">{{next_product_button}}&rarr;</a></span>
+        {% endif %}
+        </div>
+        {% endif %}
+      {% endif %}
+      {% endcomment %}
+      
+      
+      <div class="cf"><br/><br/></div>
+
+    </div><!-- #product-details -->
+
+  </form>
+  
+  <div id="product-photos" class="l forty hidemobile">
+  
+  
+	 
+ 	<div id="main-image">
+ 		<div class="flexslider">
+ 			<ul class="slides">
+ 			{% for image in product.images %}
+		      <li>
+		      <div class="cloud-zoom">
+			        <a href="{{ image | product_img_url: 'original' }}" data-original-image="{{ image | product_img_url: 'original' }}" >
+		            	<img src="{{ image | product_img_url: 'original' }}" alt="{{ image.alt | escape }}" />
+		            </a>
+		      </div>
+		      </li>
+		      {% endfor %}
+ 			
+ 			</ul>
+ 		</div>
+
+    </div>
+
+
+
+
+
+  </div><!-- #product-photos -->
+ 
+
+</div>
+
+<div style="display: none;">
+	<div id="size-popup">
+		{{ pages.size-guide.content}}
+		<h2>{{size_guide}}</h2>
+	</div>
+</div>
+
+
+
+{% include 'related' %}
+{% comment %}
+<div id="accessories">
+  <h1>{{add_accessories_msg}}</h1>
+	<div class="c cf">
+	<div id="owl">
+	{% for product in collections.accessories.products %}
+		<div class='item'>			
+			<a href="{{product.url}}">
+			<img src="{{product.featured_image | product_img_url: 'large' }}" /><br/>
+			<b>{{product.title}}</b><br/>
+			{{product.price | money}}
+			</a>
+		</div>
+	{% endfor %}
+	</div>
+	</div>
+</div>
+{% endcomment %}
+
+{% comment %}
+Adding support for product options. See here for details: http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options
+{% endcomment %}
+
+<script>
+
+$(function() {
+	/*$(".thumb-img").bind("mouseover",function(){
+		$(".cloud-zoom img").attr("src",$(this).attr("href"));
+        return false;
+    });
+	$(".thumb-img").bind("click",function(){
+		$(".cloud-zoom img").attr("src",$(this).attr("href"));
+        return false;
+    });*/
+	$('.cloud-zoom').zoom();
+	/*$('.size-guide-link').click(function(e) {
+		e.preventDefault();
+		$("#size-popup").modal({
+			overlayClose:true
+		});
+	});*/
+  
+  $('.flexslider').flexslider({
+    controlNav: false,
+    directionNav: true,
+    slideshow: false
+  });
+  
+
+});
+  
+{% assign option_to_match = 'Title' %}
+{% assign option_index = 0 %}
+{% for option in product.options %}
+  {% if option == option_to_match %}
+    {% assign option_index = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+  
+var selectCallback = function(variant, selector) {
+  
+    //Swapping images JS
+    var optionValue = variant.options[{{ option_index }}];
+	var imageSrc = $("#main-image img[alt='"+optionValue+"']:first").attr('src');
+    var items = $('#main-image .slides li');
+    var curItem = $("#main-image img[alt='"+optionValue+"']:first").parent().parent().parent();
+    var index = items.index(curItem);
+    $('#main-image .flexslider').flexslider(index);
+  
+  
+
+
+
+  if (variant) {
+    
+    // Selected a valid variant that is available.
+    if (variant.available) {
+          
+      // Enabling add to cart button.
+      jQuery('#add').removeClass('disabled').removeAttr('disabled').val('Add to Cart').fadeTo(200,1);
+    
+      // If item is backordered yet can still be ordered, we'll show special message.
+      if (variant.inventory_management && variant.inventory_quantity <= 0) {
+        jQuery('#selected-variant').html({{ product.title | json }}{% unless hide_default_title %} + ' - ' + variant.title{% endunless %});
+        jQuery('#backorder').removeClass("hidden");
+      } else {
+        jQuery('#backorder').addClass("hidden");
+        
+      }
+      
+      if(variant.title == "Below Knee") {
+        jQuery('#bk-questions').fadeIn();
+      } else {
+        jQuery('#bk-questions').hide();
+      }
+      
+    } else {
+      // Variant is sold out.
+      jQuery('#backorder').addClass('hidden');
+      jQuery('#add').val('Sold Out').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);        
+    }
+    
+    // Whether the variant is in stock or not, we can update the price and compare at price.
+    if ( variant.compare_at_price > variant.price ) {
+      //jQuery('.product-price').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + '&nbsp;<s class="product-compare-price">'+Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}")+ '</s>');
+    } else {
+
+      //jQuery('.product-price').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + '</span>' );
+    }        
+
+  } else {
+    // variant doesn't exist.
+    jQuery('#backorder').addClass('hidden');
+    jQuery('#add').val('Unavailable').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
+  }
+
+};
+  
+$(function($) {
+
+  new Shopify.OptionSelectors('product-select', { product: {{ product | json }}, onVariantSelected: selectCallback });
+  // Add label if only one product option and it isn't 'Title'.
+  {% if product.options.size == 1 and product.options.first != 'Title' %}
+    $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+  {% endif %}
+  
+  // Auto-select first available variant on page load.
+  {% assign found_one_in_stock = false %}
+  {% for variant in product.variants %}
+    {% if variant.available and found_one_in_stock == false %}
+      {% assign found_one_in_stock = true %}
+      {% for option in product.options %}
+      $('.single-option-selector:eq({{ forloop.index0 }})').val({{ variant.options[forloop.index0] | json }}).trigger('change');
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+
+});
+
+$(window).load(function() {
+	$('.single-option-selector').customSelect();
+    /*$('#product-select-option-0').customSelect({customClass:'var-dropdown'})
+	$('#product-select-option-1').customSelect({customClass:'var-dropdown'});
+
+	$('.var-dropdownInner').append('<span class="dd-triangle"></span>');*/
+});
+
+
+
+</script>

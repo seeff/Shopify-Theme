@@ -1,0 +1,98 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign customer_h2 = settings.customer_h2_en %}
+    {% assign customer_addresses_h3 = settings.customer_addresses_h3_en %}
+    {% assign customer_logout = settings.customer_logout_en %}
+	{% assign customer_order = settings.customer_order_en %}
+    {% assign customer_order_date = settings.customer_order_date_en %}
+    {% assign customer_order_payment = settings.customer_order_payment_en %}
+    {% assign customer_order_fulfillment = settings.customer_order_fulfillment_en %}
+	{% assign customer_order_total = settings.total_en %}
+	{% assign customer_no_orders = settings.customer_no_orders_en %}
+
+{% elsif settings.language == "es" %}
+
+    {% assign customer_h2 = settings.customer_h2_es %}
+    {% assign customer_addresses_h3 = settings.customer_addresses_h3_es %}
+    {% assign customer_logout = settings.customer_logout_es %}
+	{% assign customer_order = settings.customer_order_es %}
+    {% assign customer_order_date = settings.customer_order_date_es %}
+    {% assign customer_order_payment = settings.customer_order_payment_es %}
+    {% assign customer_order_fulfillment = settings.customer_order_fulfillment_es %}
+	{% assign customer_order_total = settings.total_es %}
+	{% assign customer_no_orders = settings.customer_no_orders_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign customer_h2 = settings.customer_h2_de %}
+    {% assign customer_addresses_h3 = settings.customer_addresses_h3_de %}
+    {% assign customer_logout = settings.customer_logout_de %}
+    {% assign customer_order = settings.customer_order_de %}
+    {% assign customer_order_date = settings.customer_order_date_de %}
+    {% assign customer_order_payment = settings.customer_order_payment_de %}
+    {% assign customer_order_fulfillment = settings.customer_order_fulfillment_de %}
+	{% assign customer_order_total = settings.total_de %}
+	{% assign customer_no_orders = settings.customer_no_orders_de %}
+
+{% endif %}
+
+{% layout settings.customer_layout %}
+<div id="customer-wrapper" class="c cf">
+
+<div id="admin_header">
+  <h2>{{customer_h2}}</h2>
+</div>
+
+<div id="customer_sidebar" class="fifty l">
+  <div id="customer_detail" class="group">
+    <h3 class="name">{{ customer.name }}</h3>
+    <h4 class="email note">{{ customer.email }}</h4><br/>
+    <div class="address note">
+      {% if customer.default_address != nil %}
+        <p>{{ customer.default_address.address1 }}</p>
+        {% if customer.default_address.address2 != "" %}
+          <p>{{ customer.default_address.address2 }}</p>
+        {% endif %}
+        <p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
+        <p>{{ customer.default_address.zip}}</p>
+        <p>{{ customer.default_address.phone }}</p>
+      {% endif %}
+      <a id="view_address" href="/account/addresses"><h3>{{customer_addresses_h3}}</h3></a>
+    </div>
+    <a href="/account/logout" class="btn logout">{{customer_logout}}</a>
+
+  </div>
+</div>
+
+<div id="customer_orders" class="fifty r">
+  {% if customer.orders.size != 0 %}
+  <table width="100%">
+    <thead>
+      <tr>
+        <th class="order_number">{{customer_order}}</th>
+        <th class="date">{{customer_order_date}}</th>
+        <th class="payment_status">{{customer_order_payment}}</th>
+        <th class="fulfillment_status">{{customer_order_fulfillment}}</th>
+        <th class="total">{{customer_order_total}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in customer.orders %}
+      <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
+        <td>{{ order.name | link_to: order.customer_url }}</td>
+        <td><span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span></td>
+        <td><span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span></td>
+        <td><span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span></td>
+        <td><span class="total money">{{ order.total_price | money }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h5>{{customer_no_orders}}</h5>
+  {% endif %}
+</div>
+</div>
+

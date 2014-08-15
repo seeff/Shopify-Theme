@@ -1,0 +1,37 @@
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign faq_read_more = settings.faq_read_more_en %}
+
+{% elsif settings.language == "es" %}
+
+    {% assign faq_read_more = settings.faq_read_more_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign faq_read_more = settings.faq_read_more_de %}
+
+{% endif %}
+
+<h1 class="page-title">{{ page.title }}</h1>
+
+{% capture author_google_plus_id %}{{ article.user.homepage | split: '|' | last | remove: 'http://'; | remove: author_twitter_handle }}{% endcapture %}
+{% if author_google_plus_id != "" %}
+<a class="author_google_plus_id" href="https://plus.google.com/{{author_google_plus_id}}?rel=author">{{ article.author }}</a>
+{% endif %}
+
+<div id="content" class="{{page.handle}}">
+	<div class="{% if page.handle == 'policies'%}thin {% endif %}c thin cf">
+          {% for article in blogs.faq.articles reversed %}
+          	<div class="faq ">
+              <h4 class="q"><a href="{{article.url}}">{{article.title}}</a></h4>
+              <section class="an rte">
+                {{article.content | strip_html | truncate: 270 }}
+                <a href="{{article.url}}">{{faq_read_more}}</a>
+              </section>
+            </div>
+          {% endfor %}
+	</div>
+</div>
+

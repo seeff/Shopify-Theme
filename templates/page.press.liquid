@@ -1,0 +1,97 @@
+
+{% comment %} Gather all the translations for a page at once {% endcomment %}
+
+{% if settings.language == "en" %}
+
+    {% assign press_h1 = settings.press_h1_en %}
+    {% assign recents_h1 = settings.recents_h1_en %}
+
+{% elsif settings.language == "es" %}
+
+    {% assign press_h1 = settings.press_h1_es %}
+    {% assign recents_h1 = settings.recents_h1_es %}
+
+{% elsif settings.language == "de" %}
+
+    {% assign press_h1 = settings.press_h1_de %}
+    {% assign recents_h1 = settings.recents_h1_de %}
+
+{% endif %}
+
+
+<h1 class="page-title">{{press_h1}}</h1>  
+<div id="press-page" class="c cf">
+	<div class="press-left">
+		<ul>
+		{% for link in linklists.press.links %}
+		<li {% if link.active %}class="active"{% endif %}><a  href="{{link.url}}">{{link.title}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+	<div class="press-right">
+	{% if page.handle == 'press' %}
+      <h1>{{recents_h1}}</h1>
+      	<ul>
+          {% for item in collections.press-coverage.products limit:1 %}
+         
+          {% for image in item.images %}
+          	{% assign totalimages = forloop.length %}
+          
+          
+          
+          
+      	               
+                <li class="resource">
+                  <a href="{{ image.alt }}" target="_blank">
+                    <img src="{{ image | product_img_url: 'original' }}" />
+                  </a>
+                </li>
+          
+          
+          {% endfor %}
+		</ul>
+      
+	    {% comment %}<ul>
+		{% for article in blogs.media-coverage.articles %}
+		<li><span class="coverage-date">{{article.published_at | date: '%m.%y'}}</span><a href="{{article.excerpt}}">{{article.title}}</a></li>
+		{% endfor %}
+		</ul>
+	    {% endcomment %}
+      {% endfor %}
+      
+	{% elsif page.handle contains 'resources' %}
+		<h1>{{page.title}}</h1>
+		<ul>
+          {% for item in collections.press-resources.products limit:1 %}
+         
+          {% for image in item.images %}
+          {% assign totalimages = forloop.length %}
+          {% endfor %}
+          
+          {% for i in (1..totalimages) %}
+          
+          {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
+          
+          {% if thecycle == 'odd' %}
+          {% assign thumb = forloop.index | minus: 1 %}
+          	               
+                <li class="resource">
+                  <a href="{{ item.images[forloop.index].src | product_img_url: 'original' }}" download>
+                    <img src="{{ item.images[thumb].src | product_img_url: 'original' }}" />
+                  </a>
+                </li>
+          
+          
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+		</ul>
+	{% elsif page.handle contains 'contact' %}
+		<h1>{{page.title}}</h1>
+		{{page.content}}
+	{% else %}
+		<h1>{{page.title}}</h1>
+		{{page.content}}
+	{% endif %}
+	</div>
+</div>

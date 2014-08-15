@@ -1,0 +1,299 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->  
+<head>
+  <meta charset="utf-8" />
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
+
+  <title>
+    {% if template == 'index' %}{% if page_title contains 'Welcome' %}{{ shop.name }} &ndash; Welcome{% else %}{{ page_title }}{% endif %}{% elsif template == '404' %}Page Not Found{% elsif page_title contains shop.name %}{{ page_title }}{% else %}{{ page_title }} &ndash; {{ shop.name }}{% endif %}
+  </title>
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description }}" />
+  {% endif %}
+
+  <link rel="canonical" href="{{ canonical_url }}" />
+
+  <meta name="viewport" content="width=device-width" />
+  
+  {% include 'open-graph-tags' %}
+
+  {{ content_for_header }}
+  
+  <script type="text/javascript" src="//use.typekit.net/nqg1cng.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+  {{ 'style.css' | asset_url | stylesheet_tag }}
+
+
+  <!--[if lt IE 9]>
+  {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
+  <![endif]-->
+
+  {% if template contains 'customers' %}
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% endif %}
+  
+  {% comment %}
+  Needed when shopify_common.js is used.
+  {% endcomment %}
+  <!--[if lt IE 8]>
+  {{ 'json2.js' | shopify_asset_url | script_tag }}
+  <![endif]-->
+
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' | script_tag }}
+  {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+
+  {{ 'shop.js'  | asset_url | script_tag }}
+
+</head>
+
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+
+
+	<div id="top-hat" class="cf">
+		<div class="c ar">
+		  <form action="/search" method="get" class="search-form l" role="search">
+		    <input id="search-icon" type="image" src="{{'search-icon.svg' | asset_url}}" width="14" />
+	        <input name="q" type="text" id="search-field" placeholder="Search" class="hint" />
+	        <input type="hidden" name="type" value="product" />
+	        
+	      </form>
+	       
+
+	      
+	      {% if shop.customer_accounts_enabled %}
+	      <p class="customer-links"> 
+	        {% if customer %}
+	          <a href="/account">My Account</a> |  {{ 'Log out' | customer_logout_link }}
+	        {% else %}
+	          {{ 'Login' | customer_login_link }}
+	        {% endif %}
+	      </p>
+	      {% endif %}
+
+
+	      
+	      <div id="top-cart" >
+	        <a href="/cart" id="active-cart">Cart <img src="{{'cart-icon.svg' | asset_url }}" width="24" />{{ cart.item_count }}</a>
+			<div id="cart-hover">
+				<form action="/cart" method="post" id="cartform">
+					<ul>
+					{% for item in cart.items %}
+						<li class="cf">
+							<div class="forty l">
+							<a href="{{item.product.url}}"><img src="{{ item.product.images.first | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" /></a>
+				    		</div>
+				    		<div class="sixty r">
+				    			<span class="carttitle"><b><a href="{{item.product.url}}">{{ item.product.title }}</a></b></span>
+				    			{% if item.variant.option1 != 'Default Title' %}
+								  {% for i in (1..item.product.options.size) %}
+								    {% case i %}
+								    {% when 1 %}
+								      <span><b>{{ item.product.options.first }}:</b> {{ item.variant.option1 }}</span>
+								    {% when 2 %}			
+								      {% if item.product.options.size == 2 %}
+								        <span><b>{{ item.product.options.last}}:</b> {{ item.variant.option2 }}</span>
+								      {% else %}
+								        <span><b>{{ item.product.options | remove : item.product.options.first | remove: item.product.options.last  }}:</b> {{ item.variant.option2 }}</span>
+								      {% endif %}
+								    {% else %}  
+								      <span><b>{{ item.product.options.last }}:</b> {{ item.variant.option3 }}</span>
+								    {% endcase %}
+								  {% endfor %}
+								{% endif %}
+				    			<span class="cartprice"><b>PRICE:</b> {{ item.variant.price | money }}</span>
+				                <span class="cartquantity"><b>QTY:</b> {{ item.quantity }}</span>
+				                <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cartremove" title="remove">x Remove</a>
+				    		</div>
+						</li>
+					{% endfor %}
+					</ul>
+					<h4 class="subtotal">Subtotal: {{ cart.total_price | money }}</h4>
+				    <input class="btn checkout" type="submit" name="checkout" value="Checkout" />
+				</form>
+			</div>
+	      </div>
+	      {% comment %}
+	      <div id="top-social">
+	      	{% if settings.facebook %}<a href="{{settings.facebook_url}}"><i class="fa fa-facebook"></i></a>{% endif %}
+			{% if settings.twitter %}<a href="{{settings.twitter_url}}"><i class="fa fa-twitter"></i></a>{% endif %}
+			{% if settings.instagram %}<a href="{{settings.instagram_url}}"><i class="fa fa-instagram"></i></a>{% endif %}
+			{% if settings.pinterest %}<a href="{{settings.pinterest_url}}"><i class="fa fa-pinterest"></i></a>{% endif %}
+			{% if settings.youtube %}<a href="{{settings.youtube_url}}"><i class="fa fa-youtube"></i></a>{% endif %}
+	      </div>
+	      {% endcomment %}
+		</div>
+	</div>
+    <header>
+      
+      {% comment %}
+      Older browsers don't support the HTML5 placeholder attribute, so it's a good idea to use JavaScript
+      to show and hide the placeholder text.
+      Have a look in assets/shop.js.liquid to see sample JavaScript for this.
+      {% endcomment %}
+      
+      
+      
+      {% comment %}
+      It would be nice if the logo was a shop setting, rather than a theme setting.
+      But for now, it is a theme setting. The shop logo is uploaded on the theme settings page.
+      Link to the theme settings page of currently published theme will always be:
+      http://www.shopify.com/admin/themes/current/settings.
+      To add theme settings to a theme, see this: http://docs.shopify.com/themes/theme-templates/settings
+      Theme settings are added to http://www.shopify.com/admin/themes/current#config/settings.html
+      {% endcomment %}
+      
+      <div>
+    <div id="logo" class="c cf">
+      <a id="logo" href="/" role="banner">
+        {{ 'UNYQ-logo2.svg' | asset_url | img_tag: shop.name }}
+      </a><!-- #logo -->
+    </div>
+     
+      
+      {% comment %}
+      A word on drop-down menus: Shopify has no concept of drop-down menus.
+      Drop-down menus in Shopify themes are a hack that relies on a naming convention.
+      To create a drop-down menu, the merchant must create a link list that has the same name as the link he wants the drop-down for.
+      For example, if he wants a drop-down under a 'Shop by brand' link (say, he has such link in his Main Menu), he needs to create
+      a linklist called 'Shop by brand', and populate it with links. Once he has done that, there'll be a drop-down under 'Shop by brand'.
+      Shopify has a visual how-to guide here: http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu.
+      The naming convention hack won't work well if a shop's navigation uses non-English characters. There's a much more verbose coding solution
+      that handles non-English characters here: http://docs.shopify.com/support/configuration/store-customization/can-i-have-drop-down-menus-that-use-non-english-characters.
+      A word on sub-categories: Shopify manages sub-categories using product tags: http://docs.shopify.com/manual/configuration/store-customization/subcategories.
+      {% endcomment %}
+      
+      <nav id="main-nav" role="navigation">
+      <div class="c cf">
+        <ul class="nav">
+          {% for link in linklists.main-menu.links %}
+          {% assign has_sub_menu = false %}
+          {% assign has_sub_categories = false %}
+          {% assign parent_link_active = false %}
+          {% assign child_list_handle = link.title | handle %}
+          {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+            {% assign has_sub_menu = true %}
+            {% for l in linklists[child_list_handle].links %}
+              {% if page_title == l.title %}
+                {% assign parent_link_active = true %}
+              {% endif %}
+            {% endfor %}
+          {% elsif link.type == 'collection_link' and link.object.all_tags.size > 0 %}
+            {% assign has_sub_categories = true %}
+          {% endif %}
+          <li class="nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if link.active or parent_link_active %} active{% endif %}{% if has_sub_menu or has_sub_categories %} has-dropdown{% endif %}">
+            {{ link.title | link_to: link.url }}
+            {% if link.handle contains 'shopaholic' %}
+            <div id="shop-dd">
+            	<b>Shop By</b>
+            	<ul class="cf">
+            	{% for link in linklists.shop.links %}
+            	<li><a href="{{link.url}}">{{link.title}}</a></li>
+            	{% endfor %}
+            	</ul>
+            	<a href="/collections/all">Shop All</a>
+            </div>
+            
+            {% endif %}
+            {% comment %}
+            {% if has_sub_menu or has_sub_categories %}
+            
+            <ul class="sub-nav">
+              <li class="sub-nav-niblet"></li>
+              {% if has_sub_menu %}
+                {% for l in linklists[child_list_handle].links %}
+                <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if l.active %} active{% endif %}">
+                  <a class="{% if forloop.first %}first{% elsif forloop.last %}last{% endif %}" href="{{ l.url }}">{{ l.title }}</a>
+                </li>
+                {% endfor %}
+              {% elsif has_sub_categories %}
+                {% for tag in link.object.all_tags %}
+                <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if current_tags contains tag %} active{% endif %}">
+                  <a class="{% if forloop.first %}first{% elsif forloop.last %}last{% endif %}" href="{{ link.url }}/{{ tag | handle }}">{{ tag }}</a>
+                </li>
+                {% endfor %}
+              {% endif %}
+              
+            </ul>
+
+            {% endif %}
+            {% endcomment %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      </nav>
+      </div>
+
+    </header>
+
+    <div id="main" role="main" class="cf">
+      {% comment %}}
+      We have a template file to render.
+      That's what content_for_layout is for.
+      {% endcomment %}
+      {{ content_for_layout }}
+    </div>
+    
+    <div id="mailing-list">
+    	<h4>Stay In Touch</h4>
+      	<form id="signup" class="validate" target="_blank" name="mc-embedded-subscribe-form" method="post" action="http://ocelotrobot.us2.list-manage.com/subscribe/post?u=ec4e58f8a0009191dc3267e4e&id=cc822668cf">
+			<input id="email" type="text" placeholder="Enter Email" name="email" />
+			<input id="signup-submit" type="submit" value="JOIN" name="Submit" />
+		</form>
+		<div id="footer-social">
+			{% if settings.facebook %}<a href="{{settings.facebook_url}}"><i class="fa fa-facebook"></i></a>{% endif %}
+			{% if settings.twitter %}<a href="{{settings.twitter_url}}"><i class="fa fa-twitter"></i></a>{% endif %}
+			{% if settings.instagram %}<a href="{{settings.instagram_url}}"><i class="fa fa-instagram"></i></a>{% endif %}
+			{% if settings.pinterest %}<a href="{{settings.pinterest_url}}"><i class="fa fa-pinterest"></i></a>{% endif %}
+			{% if settings.youtube %}<a href="{{settings.youtube_url}}"><i class="fa fa-youtube"></i></a>{% endif %}
+		</div>
+    </div>
+
+    <footer>
+    
+	      
+	      
+
+		      	{% for link in linklists.footer.links %}
+		        	<a href="{{ link.url }}" title="{{ link.title }}"{% if link.active %} class="active"{% endif %}>{{ link.title }}</a> {% unless forloop.last %} | {% endunless %}
+		        {% endfor %}
+	        
+
+
+	      
+	           <p align="center" role="contentinfo" class="copyright cf">Copyright &copy; {{ "now" | date: "%Y" }} {{ shop.name }}. All Rights Reserved. Website by <a href="http://bohemiandchic.com">Bohemi+Chic</a></p>
+    </footer>
+
+    {% comment %}Shopify does not support Internet Explorer 6.{% endcomment %}
+    <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    
+  
+  {% unless template.handle contains 'collection' %}
+  <script>
+  $(function() {
+  	$('.lazy').lazyload({
+            effect: "fadeIn",
+            threshold: 200
+    });
+  });
+  </script>
+  {% endunless %}
+  
+ {% include 'zendesk' %}
+</body>
+</html>
